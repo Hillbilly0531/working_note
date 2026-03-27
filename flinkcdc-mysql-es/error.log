@@ -1,0 +1,475 @@
+026-03-26 16:30:50,389 INFO  io.debezium.jdbc.JdbcConnection                              [] - Connection gracefully closed
+2026-03-26 16:30:50,390 INFO  org.apache.flink.cdc.connectors.mysql.source.assigners.MySqlSnapshotSplitAssigner [] - Start splitting table db_stock.ts_saleoutmt into chunks...
+2026-03-26 16:30:50,394 INFO  org.apache.flink.runtime.resourcemanager.slotmanager.FineGrainedSlotManager [] - Matching resource requirements against available resources.
+Missing resources:
+         Job 05fdc67208dc4d9fdbebe9fc70669b16
+                ResourceRequirement{resourceProfile=ResourceProfile{UNKNOWN}, numberOfRequiredSlots=1}
+Current resources:
+        TaskManager swd134:36130-f0bb52
+                Available: ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+                Total:     ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+        TaskManager swd134:33667-600732
+                Available: ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+                Total:     ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+        TaskManager swd134:37760-d6e9fc
+                Available: ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+                Total:     ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+        TaskManager swd134:42385-7bb033
+                Available: ResourceProfile{cpuCores=5, taskHeapMemory=320.000mb (335544312 bytes), taskOffHeapMemory=0 bytes, managedMemory=426.667mb (447392434 bytes), networkMemory=106.667mb (111848109 bytes)}
+                Total:     ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+        TaskManager swd134:46610-c1310f
+                Available: ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+                Total:     ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+        TaskManager swd133:41155-eb51bd
+                Available: ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+                Total:     ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+        TaskManager swd134:43322-e1397a
+                Available: ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+                Total:     ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+        TaskManager swd135:35450-9f494f
+                Available: ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+                Total:     ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+2026-03-26 16:30:50,395 INFO  org.apache.flink.runtime.resourcemanager.slotmanager.DefaultSlotStatusSyncer [] - Starting allocation of slot 097b1b379fdd1da31901ce276734b9c6 from swd134:36130-f0bb52 for job 05fdc67208dc4d9fdbebe9fc70669b16 with resource profile ResourceProfile{cpuCores=1, taskHeapMemory=64.000mb (67108862 bytes), taskOffHeapMemory=0 bytes, managedMemory=85.333mb (89478486 bytes), networkMemory=21.333mb (22369621 bytes)}.
+2026-03-26 16:30:50,415 INFO  org.apache.flink.runtime.executiongraph.ExecutionGraph       [] - Source: mysql_ts_saleoutmt[23] -> DropUpdateBefore[24] -> ConstraintEnforcer[25] -> Sink: es_ts_saleoutmt[25] (1/1) (851055d66ebb508d51ba2304e0c109b9_cbc357ccb763df2852fee8c4fc7d55f2_0_0) switched from SCHEDULED to DEPLOYING.
+2026-03-26 16:30:50,416 INFO  org.apache.flink.runtime.executiongraph.ExecutionGraph       [] - Deploying Source: mysql_ts_saleoutmt[23] -> DropUpdateBefore[24] -> ConstraintEnforcer[25] -> Sink: es_ts_saleoutmt[25] (1/1) (attempt #0) with attempt id 851055d66ebb508d51ba2304e0c109b9_cbc357ccb763df2852fee8c4fc7d55f2_0_0 and vertex id cbc357ccb763df2852fee8c4fc7d55f2_0 to swd134:36130-f0bb52 @ swd134 (dataPort=40545) with allocation id 097b1b379fdd1da31901ce276734b9c6
+2026-03-26 16:30:50,468 INFO  org.apache.flink.cdc.connectors.mysql.source.assigners.MySqlChunkSplitter [] - The distribution factor of table db_stock.ts_saleoutmt is 88132.2709 according to the min split key 1, max split key 2025103320 and approximate row count 22978
+2026-03-26 16:30:50,468 INFO  org.apache.flink.cdc.connectors.mysql.source.assigners.MySqlChunkSplitter [] - The actual distribution factor for table db_stock.ts_saleoutmt is 88132.2709, the lower bound of evenly distribution factor is 0.05, the upper bound of evenly distribution factor is 1000.0
+2026-03-26 16:30:50,468 INFO  org.apache.flink.cdc.connectors.mysql.source.assigners.MySqlChunkSplitter [] - Use unevenly-sized chunks for table db_stock.ts_saleoutmt, the chunk size is 8096 from null
+2026-03-26 16:30:50,471 INFO  org.apache.flink.runtime.executiongraph.ExecutionGraph       [] - Source: mysql_ts_saleoutmt[23] -> DropUpdateBefore[24] -> ConstraintEnforcer[25] -> Sink: es_ts_saleoutmt[25] (1/1) (851055d66ebb508d51ba2304e0c109b9_cbc357ccb763df2852fee8c4fc7d55f2_0_0) switched from DEPLOYING to INITIALIZING.
+2026-03-26 16:30:50,500 INFO  org.apache.flink.runtime.executiongraph.ExecutionGraph       [] - Source: mysql_ts_saleoutmt[23] -> DropUpdateBefore[24] -> ConstraintEnforcer[25] -> Sink: es_ts_saleoutmt[25] (1/1) (851055d66ebb508d51ba2304e0c109b9_cbc357ccb763df2852fee8c4fc7d55f2_0_0) switched from INITIALIZING to FAILED on swd134:36130-f0bb52 @ swd134 (dataPort=40545).
+org.apache.flink.streaming.runtime.tasks.StreamTaskException: Cannot load user class: org.apache.flink.streaming.connectors.elasticsearch7.ElasticsearchSink
+ClassLoader info: URL ClassLoader:
+    file: '/tmp/tm_swd134:36130-f0bb52/blobStorage/job_05fdc67208dc4d9fdbebe9fc70669b16/blob_p-31bb318c8f35a4c3e9bd8c157b432b372214ca03-8770270be5c59d9d6299abe965226c6e' (valid JAR)
+Class not resolvable through given classloader.
+        at org.apache.flink.streaming.api.graph.StreamConfig.getStreamOperatorFactory(StreamConfig.java:414) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperator(OperatorChain.java:869) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:836) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:825) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:825) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.<init>(OperatorChain.java:202) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.RegularOperatorChain.<init>(RegularOperatorChain.java:60) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.StreamTask.restoreInternal(StreamTask.java:789) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.StreamTask.restore(StreamTask.java:771) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.runWithSystemExitMonitoring(Task.java:970) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.restoreAndInvoke(Task.java:939) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.doRun(Task.java:763) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.run(Task.java:575) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at java.lang.Thread.run(Thread.java:834) ~[?:?]
+Caused by: java.lang.ClassNotFoundException: org.apache.flink.streaming.connectors.elasticsearch7.ElasticsearchSink
+        at java.net.URLClassLoader.findClass(URLClassLoader.java:476) ~[?:?]
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:593) ~[?:?]
+        at org.apache.flink.util.FlinkUserCodeClassLoader.loadClassWithoutExceptionHandling(FlinkUserCodeClassLoader.java:67) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.util.ChildFirstClassLoader.loadClassWithoutExceptionHandling(ChildFirstClassLoader.java:65) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.util.FlinkUserCodeClassLoader.loadClass(FlinkUserCodeClassLoader.java:51) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[?:?]
+        at org.apache.flink.util.FlinkUserCodeClassLoaders$SafetyNetWrapperClassLoader.loadClass(FlinkUserCodeClassLoaders.java:197) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at java.lang.Class.forName0(Native Method) ~[?:?]
+        at java.lang.Class.forName(Class.java:398) ~[?:?]
+        at org.apache.flink.util.InstantiationUtil$ClassLoaderObjectInputStream.resolveClass(InstantiationUtil.java:76) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2025) ~[?:?]
+        at java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1892) ~[?:?]
+        at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2223) ~[?:?]
+        at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1709) ~[?:?]
+        at java.io.ObjectInputStream.defaultReadFields(ObjectInputStream.java:2518) ~[?:?]
+        at java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2412) ~[?:?]
+        at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2250) ~[?:?]
+        at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1709) ~[?:?]
+        at java.io.ObjectInputStream.defaultReadFields(ObjectInputStream.java:2518) ~[?:?]
+        at java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2412) ~[?:?]
+        at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2250) ~[?:?]
+        at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1709) ~[?:?]
+        at java.io.ObjectInputStream.readObject(ObjectInputStream.java:500) ~[?:?]
+        at java.io.ObjectInputStream.readObject(ObjectInputStream.java:458) ~[?:?]
+        at org.apache.flink.util.InstantiationUtil.deserializeObject(InstantiationUtil.java:488) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.util.InstantiationUtil.deserializeObject(InstantiationUtil.java:472) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.util.InstantiationUtil.deserializeObject(InstantiationUtil.java:467) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.util.InstantiationUtil.readObjectFromConfig(InstantiationUtil.java:422) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.api.graph.StreamConfig.getStreamOperatorFactory(StreamConfig.java:400) ~[flink-dist-1.20.1.jar:1.20.1]
+        ... 16 more
+2026-03-26 16:30:50,502 INFO  org.apache.flink.runtime.resourcemanager.slotmanager.FineGrainedSlotManager [] - Clearing resource requirements of job 05fdc67208dc4d9fdbebe9fc70669b16
+2026-03-26 16:30:50,502 INFO  org.apache.flink.runtime.source.coordinator.SourceCoordinator [] - Removing registered reader after failure for subtask 0 (#0) of source Source: mysql_ts_saleoutmt[23].
+2026-03-26 16:30:50,503 INFO  org.apache.flink.runtime.executiongraph.ExecutionGraph       [] - Job insert-into_default_catalog.default_database.es_ts_saleoutmt (05fdc67208dc4d9fdbebe9fc70669b16) switched from state RUNNING to FAILING.
+org.apache.flink.runtime.JobException: Recovery is suppressed by NoRestartBackoffTimeStrategy
+        at org.apache.flink.runtime.executiongraph.failover.ExecutionFailureHandler.handleFailure(ExecutionFailureHandler.java:219) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.executiongraph.failover.ExecutionFailureHandler.handleFailureAndReport(ExecutionFailureHandler.java:166) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.executiongraph.failover.ExecutionFailureHandler.getFailureHandlingResult(ExecutionFailureHandler.java:121) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.scheduler.DefaultScheduler.recordTaskFailure(DefaultScheduler.java:281) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.scheduler.DefaultScheduler.handleTaskFailure(DefaultScheduler.java:272) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.scheduler.DefaultScheduler.onTaskFailed(DefaultScheduler.java:265) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.scheduler.SchedulerBase.onTaskExecutionStateUpdate(SchedulerBase.java:787) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.scheduler.SchedulerBase.updateTaskExecutionState(SchedulerBase.java:764) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.scheduler.SchedulerNG.updateTaskExecutionState(SchedulerNG.java:83) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.jobmaster.JobMaster.updateTaskExecutionState(JobMaster.java:515) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at jdk.internal.reflect.GeneratedMethodAccessor114.invoke(Unknown Source) ~[?:?]
+        at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+        at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+        at org.apache.flink.runtime.rpc.pekko.PekkoRpcActor.lambda$handleRpcInvocation$1(PekkoRpcActor.java:318) ~[flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.flink.runtime.concurrent.ClassLoadingUtils.runWithContextClassLoader(ClassLoadingUtils.java:83) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.rpc.pekko.PekkoRpcActor.handleRpcInvocation(PekkoRpcActor.java:316) ~[flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.flink.runtime.rpc.pekko.PekkoRpcActor.handleRpcMessage(PekkoRpcActor.java:229) ~[flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.flink.runtime.rpc.pekko.FencedPekkoRpcActor.handleRpcMessage(FencedPekkoRpcActor.java:88) ~[flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.flink.runtime.rpc.pekko.PekkoRpcActor.handleMessage(PekkoRpcActor.java:174) ~[flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.japi.pf.UnitCaseStatement.apply(CaseStatements.scala:33) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.japi.pf.UnitCaseStatement.apply(CaseStatements.scala:29) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at scala.PartialFunction.applyOrElse(PartialFunction.scala:127) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at scala.PartialFunction.applyOrElse$(PartialFunction.scala:126) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.japi.pf.UnitCaseStatement.applyOrElse(CaseStatements.scala:29) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:175) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:176) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:176) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.actor.Actor.aroundReceive(Actor.scala:547) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.actor.Actor.aroundReceive$(Actor.scala:545) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.actor.AbstractActor.aroundReceive(AbstractActor.scala:229) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.actor.ActorCell.receiveMessage(ActorCell.scala:590) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.actor.ActorCell.invoke(ActorCell.scala:557) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.dispatch.Mailbox.processMailbox(Mailbox.scala:272) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.dispatch.Mailbox.run(Mailbox.scala:233) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.dispatch.Mailbox.exec(Mailbox.scala:245) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290) [?:?]
+        at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020) [?:?]
+        at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656) [?:?]
+        at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594) [?:?]
+        at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183) [?:?]
+Caused by: org.apache.flink.streaming.runtime.tasks.StreamTaskException: Cannot load user class: org.apache.flink.streaming.connectors.elasticsearch7.ElasticsearchSink
+ClassLoader info: URL ClassLoader:
+    file: '/tmp/tm_swd134:36130-f0bb52/blobStorage/job_05fdc67208dc4d9fdbebe9fc70669b16/blob_p-31bb318c8f35a4c3e9bd8c157b432b372214ca03-8770270be5c59d9d6299abe965226c6e' (valid JAR)
+Class not resolvable through given classloader.
+        at org.apache.flink.streaming.api.graph.StreamConfig.getStreamOperatorFactory(StreamConfig.java:414) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperator(OperatorChain.java:869) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:836) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:825) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:825) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.<init>(OperatorChain.java:202) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.RegularOperatorChain.<init>(RegularOperatorChain.java:60) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.StreamTask.restoreInternal(StreamTask.java:789) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.StreamTask.restore(StreamTask.java:771) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.runWithSystemExitMonitoring(Task.java:970) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.restoreAndInvoke(Task.java:939) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.doRun(Task.java:763) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.run(Task.java:575) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at java.lang.Thread.run(Thread.java:834) ~[?:?]
+Caused by: java.lang.ClassNotFoundException: org.apache.flink.streaming.connectors.elasticsearch7.ElasticsearchSink
+        at java.net.URLClassLoader.findClass(URLClassLoader.java:476) ~[?:?]
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:593) ~[?:?]
+        at org.apache.flink.util.FlinkUserCodeClassLoader.loadClassWithoutExceptionHandling(FlinkUserCodeClassLoader.java:67) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.util.ChildFirstClassLoader.loadClassWithoutExceptionHandling(ChildFirstClassLoader.java:65) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.util.FlinkUserCodeClassLoader.loadClass(FlinkUserCodeClassLoader.java:51) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[?:?]
+        at org.apache.flink.util.FlinkUserCodeClassLoaders$SafetyNetWrapperClassLoader.loadClass(FlinkUserCodeClassLoaders.java:197) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at java.lang.Class.forName0(Native Method) ~[?:?]
+        at java.lang.Class.forName(Class.java:398) ~[?:?]
+        at org.apache.flink.util.InstantiationUtil$ClassLoaderObjectInputStream.resolveClass(InstantiationUtil.java:76) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2025) ~[?:?]
+        at java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1892) ~[?:?]
+        at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2223) ~[?:?]
+        at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1709) ~[?:?]
+        at java.io.ObjectInputStream.defaultReadFields(ObjectInputStream.java:2518) ~[?:?]
+        at java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2412) ~[?:?]
+        at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2250) ~[?:?]
+        at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1709) ~[?:?]
+        at java.io.ObjectInputStream.defaultReadFields(ObjectInputStream.java:2518) ~[?:?]
+        at java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2412) ~[?:?]
+        at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2250) ~[?:?]
+        at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1709) ~[?:?]
+        at java.io.ObjectInputStream.readObject(ObjectInputStream.java:500) ~[?:?]
+        at java.io.ObjectInputStream.readObject(ObjectInputStream.java:458) ~[?:?]
+        at org.apache.flink.util.InstantiationUtil.deserializeObject(InstantiationUtil.java:488) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.util.InstantiationUtil.deserializeObject(InstantiationUtil.java:472) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.util.InstantiationUtil.deserializeObject(InstantiationUtil.java:467) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.util.InstantiationUtil.readObjectFromConfig(InstantiationUtil.java:422) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.api.graph.StreamConfig.getStreamOperatorFactory(StreamConfig.java:400) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperator(OperatorChain.java:869) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:836) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:825) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:825) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.<init>(OperatorChain.java:202) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.RegularOperatorChain.<init>(RegularOperatorChain.java:60) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.StreamTask.restoreInternal(StreamTask.java:789) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.StreamTask.restore(StreamTask.java:771) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.runWithSystemExitMonitoring(Task.java:970) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.restoreAndInvoke(Task.java:939) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.doRun(Task.java:763) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.run(Task.java:575) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at java.lang.Thread.run(Thread.java:834) ~[?:?]
+2026-03-26 16:30:50,505 INFO  org.apache.flink.runtime.executiongraph.ExecutionGraph       [] - Job insert-into_default_catalog.default_database.es_ts_saleoutmt (05fdc67208dc4d9fdbebe9fc70669b16) switched from state FAILING to FAILED.
+org.apache.flink.runtime.JobException: Recovery is suppressed by NoRestartBackoffTimeStrategy
+        at org.apache.flink.runtime.executiongraph.failover.ExecutionFailureHandler.handleFailure(ExecutionFailureHandler.java:219) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.executiongraph.failover.ExecutionFailureHandler.handleFailureAndReport(ExecutionFailureHandler.java:166) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.executiongraph.failover.ExecutionFailureHandler.getFailureHandlingResult(ExecutionFailureHandler.java:121) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.scheduler.DefaultScheduler.recordTaskFailure(DefaultScheduler.java:281) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.scheduler.DefaultScheduler.handleTaskFailure(DefaultScheduler.java:272) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.scheduler.DefaultScheduler.onTaskFailed(DefaultScheduler.java:265) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.scheduler.SchedulerBase.onTaskExecutionStateUpdate(SchedulerBase.java:787) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.scheduler.SchedulerBase.updateTaskExecutionState(SchedulerBase.java:764) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.scheduler.SchedulerNG.updateTaskExecutionState(SchedulerNG.java:83) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.jobmaster.JobMaster.updateTaskExecutionState(JobMaster.java:515) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at jdk.internal.reflect.GeneratedMethodAccessor114.invoke(Unknown Source) ~[?:?]
+        at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+        at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+        at org.apache.flink.runtime.rpc.pekko.PekkoRpcActor.lambda$handleRpcInvocation$1(PekkoRpcActor.java:318) ~[flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.flink.runtime.concurrent.ClassLoadingUtils.runWithContextClassLoader(ClassLoadingUtils.java:83) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.rpc.pekko.PekkoRpcActor.handleRpcInvocation(PekkoRpcActor.java:316) ~[flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.flink.runtime.rpc.pekko.PekkoRpcActor.handleRpcMessage(PekkoRpcActor.java:229) ~[flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.flink.runtime.rpc.pekko.FencedPekkoRpcActor.handleRpcMessage(FencedPekkoRpcActor.java:88) ~[flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.flink.runtime.rpc.pekko.PekkoRpcActor.handleMessage(PekkoRpcActor.java:174) ~[flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.japi.pf.UnitCaseStatement.apply(CaseStatements.scala:33) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.japi.pf.UnitCaseStatement.apply(CaseStatements.scala:29) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at scala.PartialFunction.applyOrElse(PartialFunction.scala:127) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at scala.PartialFunction.applyOrElse$(PartialFunction.scala:126) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.japi.pf.UnitCaseStatement.applyOrElse(CaseStatements.scala:29) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:175) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:176) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:176) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.actor.Actor.aroundReceive(Actor.scala:547) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.actor.Actor.aroundReceive$(Actor.scala:545) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.actor.AbstractActor.aroundReceive(AbstractActor.scala:229) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.actor.ActorCell.receiveMessage(ActorCell.scala:590) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.actor.ActorCell.invoke(ActorCell.scala:557) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.dispatch.Mailbox.processMailbox(Mailbox.scala:272) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.dispatch.Mailbox.run(Mailbox.scala:233) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.dispatch.Mailbox.exec(Mailbox.scala:245) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290) [?:?]
+        at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020) [?:?]
+        at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656) [?:?]
+        at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594) [?:?]
+        at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183) [?:?]
+Caused by: org.apache.flink.streaming.runtime.tasks.StreamTaskException: Cannot load user class: org.apache.flink.streaming.connectors.elasticsearch7.ElasticsearchSink
+ClassLoader info: URL ClassLoader:
+    file: '/tmp/tm_swd134:36130-f0bb52/blobStorage/job_05fdc67208dc4d9fdbebe9fc70669b16/blob_p-31bb318c8f35a4c3e9bd8c157b432b372214ca03-8770270be5c59d9d6299abe965226c6e' (valid JAR)
+Class not resolvable through given classloader.
+        at org.apache.flink.streaming.api.graph.StreamConfig.getStreamOperatorFactory(StreamConfig.java:414) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperator(OperatorChain.java:869) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:836) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:825) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:825) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.<init>(OperatorChain.java:202) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.RegularOperatorChain.<init>(RegularOperatorChain.java:60) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.StreamTask.restoreInternal(StreamTask.java:789) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.StreamTask.restore(StreamTask.java:771) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.runWithSystemExitMonitoring(Task.java:970) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.restoreAndInvoke(Task.java:939) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.doRun(Task.java:763) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.run(Task.java:575) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at java.lang.Thread.run(Thread.java:834) ~[?:?]
+Caused by: java.lang.ClassNotFoundException: org.apache.flink.streaming.connectors.elasticsearch7.ElasticsearchSink
+        at java.net.URLClassLoader.findClass(URLClassLoader.java:476) ~[?:?]
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:593) ~[?:?]
+        at org.apache.flink.util.FlinkUserCodeClassLoader.loadClassWithoutExceptionHandling(FlinkUserCodeClassLoader.java:67) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.util.ChildFirstClassLoader.loadClassWithoutExceptionHandling(ChildFirstClassLoader.java:65) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.util.FlinkUserCodeClassLoader.loadClass(FlinkUserCodeClassLoader.java:51) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[?:?]
+        at org.apache.flink.util.FlinkUserCodeClassLoaders$SafetyNetWrapperClassLoader.loadClass(FlinkUserCodeClassLoaders.java:197) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at java.lang.Class.forName0(Native Method) ~[?:?]
+        at java.lang.Class.forName(Class.java:398) ~[?:?]
+        at org.apache.flink.util.InstantiationUtil$ClassLoaderObjectInputStream.resolveClass(InstantiationUtil.java:76) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2025) ~[?:?]
+        at java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1892) ~[?:?]
+        at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2223) ~[?:?]
+        at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1709) ~[?:?]
+        at java.io.ObjectInputStream.defaultReadFields(ObjectInputStream.java:2518) ~[?:?]
+        at java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2412) ~[?:?]
+        at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2250) ~[?:?]
+        at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1709) ~[?:?]
+        at java.io.ObjectInputStream.defaultReadFields(ObjectInputStream.java:2518) ~[?:?]
+        at java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2412) ~[?:?]
+        at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2250) ~[?:?]
+        at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1709) ~[?:?]
+        at java.io.ObjectInputStream.readObject(ObjectInputStream.java:500) ~[?:?]
+        at java.io.ObjectInputStream.readObject(ObjectInputStream.java:458) ~[?:?]
+        at org.apache.flink.util.InstantiationUtil.deserializeObject(InstantiationUtil.java:488) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.util.InstantiationUtil.deserializeObject(InstantiationUtil.java:472) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.util.InstantiationUtil.deserializeObject(InstantiationUtil.java:467) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.util.InstantiationUtil.readObjectFromConfig(InstantiationUtil.java:422) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.api.graph.StreamConfig.getStreamOperatorFactory(StreamConfig.java:400) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperator(OperatorChain.java:869) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:836) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:825) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:825) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.<init>(OperatorChain.java:202) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.RegularOperatorChain.<init>(RegularOperatorChain.java:60) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.StreamTask.restoreInternal(StreamTask.java:789) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.streaming.runtime.tasks.StreamTask.restore(StreamTask.java:771) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.runWithSystemExitMonitoring(Task.java:970) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.restoreAndInvoke(Task.java:939) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.doRun(Task.java:763) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.taskmanager.Task.run(Task.java:575) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at java.lang.Thread.run(Thread.java:834) ~[?:?]
+2026-03-26 16:30:50,506 INFO  org.apache.flink.runtime.checkpoint.CheckpointCoordinator    [] - Stopping checkpoint coordinator for job 05fdc67208dc4d9fdbebe9fc70669b16.
+2026-03-26 16:30:50,507 INFO  org.apache.flink.runtime.dispatcher.StandaloneDispatcher     [] - Job 05fdc67208dc4d9fdbebe9fc70669b16 reached terminal state FAILED.
+org.apache.flink.runtime.JobException: Recovery is suppressed by NoRestartBackoffTimeStrategy
+        at org.apache.flink.runtime.executiongraph.failover.ExecutionFailureHandler.handleFailure(ExecutionFailureHandler.java:219)
+        at org.apache.flink.runtime.executiongraph.failover.ExecutionFailureHandler.handleFailureAndReport(ExecutionFailureHandler.java:166)
+        at org.apache.flink.runtime.executiongraph.failover.ExecutionFailureHandler.getFailureHandlingResult(ExecutionFailureHandler.java:121)
+        at org.apache.flink.runtime.scheduler.DefaultScheduler.recordTaskFailure(DefaultScheduler.java:281)
+        at org.apache.flink.runtime.scheduler.DefaultScheduler.handleTaskFailure(DefaultScheduler.java:272)
+        at org.apache.flink.runtime.scheduler.DefaultScheduler.onTaskFailed(DefaultScheduler.java:265)
+        at org.apache.flink.runtime.scheduler.SchedulerBase.onTaskExecutionStateUpdate(SchedulerBase.java:787)
+        at org.apache.flink.runtime.scheduler.SchedulerBase.updateTaskExecutionState(SchedulerBase.java:764)
+        at org.apache.flink.runtime.scheduler.SchedulerNG.updateTaskExecutionState(SchedulerNG.java:83)
+        at org.apache.flink.runtime.jobmaster.JobMaster.updateTaskExecutionState(JobMaster.java:515)
+        at jdk.internal.reflect.GeneratedMethodAccessor114.invoke(Unknown Source)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+        at org.apache.flink.runtime.rpc.pekko.PekkoRpcActor.lambda$handleRpcInvocation$1(PekkoRpcActor.java:318)
+        at org.apache.flink.runtime.concurrent.ClassLoadingUtils.runWithContextClassLoader(ClassLoadingUtils.java:83)
+        at org.apache.flink.runtime.rpc.pekko.PekkoRpcActor.handleRpcInvocation(PekkoRpcActor.java:316)
+        at org.apache.flink.runtime.rpc.pekko.PekkoRpcActor.handleRpcMessage(PekkoRpcActor.java:229)
+        at org.apache.flink.runtime.rpc.pekko.FencedPekkoRpcActor.handleRpcMessage(FencedPekkoRpcActor.java:88)
+        at org.apache.flink.runtime.rpc.pekko.PekkoRpcActor.handleMessage(PekkoRpcActor.java:174)
+        at org.apache.pekko.japi.pf.UnitCaseStatement.apply(CaseStatements.scala:33)
+        at org.apache.pekko.japi.pf.UnitCaseStatement.apply(CaseStatements.scala:29)
+        at scala.PartialFunction.applyOrElse(PartialFunction.scala:127)
+        at scala.PartialFunction.applyOrElse$(PartialFunction.scala:126)
+        at org.apache.pekko.japi.pf.UnitCaseStatement.applyOrElse(CaseStatements.scala:29)
+        at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:175)
+        at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:176)
+        at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:176)
+        at org.apache.pekko.actor.Actor.aroundReceive(Actor.scala:547)
+        at org.apache.pekko.actor.Actor.aroundReceive$(Actor.scala:545)
+        at org.apache.pekko.actor.AbstractActor.aroundReceive(AbstractActor.scala:229)
+        at org.apache.pekko.actor.ActorCell.receiveMessage(ActorCell.scala:590)
+        at org.apache.pekko.actor.ActorCell.invoke(ActorCell.scala:557)
+        at org.apache.pekko.dispatch.Mailbox.processMailbox(Mailbox.scala:272)
+        at org.apache.pekko.dispatch.Mailbox.run(Mailbox.scala:233)
+        at org.apache.pekko.dispatch.Mailbox.exec(Mailbox.scala:245)
+        at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290)
+        at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020)
+        at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656)
+        at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594)
+        at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183)
+Caused by: org.apache.flink.streaming.runtime.tasks.StreamTaskException: Cannot load user class: org.apache.flink.streaming.connectors.elasticsearch7.ElasticsearchSink
+ClassLoader info: URL ClassLoader:
+    file: '/tmp/tm_swd134:36130-f0bb52/blobStorage/job_05fdc67208dc4d9fdbebe9fc70669b16/blob_p-31bb318c8f35a4c3e9bd8c157b432b372214ca03-8770270be5c59d9d6299abe965226c6e' (valid JAR)
+Class not resolvable through given classloader.
+        at org.apache.flink.streaming.api.graph.StreamConfig.getStreamOperatorFactory(StreamConfig.java:414)
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperator(OperatorChain.java:869)
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:836)
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732)
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:825)
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732)
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOperatorChain(OperatorChain.java:825)
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.createOutputCollector(OperatorChain.java:732)
+        at org.apache.flink.streaming.runtime.tasks.OperatorChain.<init>(OperatorChain.java:202)
+        at org.apache.flink.streaming.runtime.tasks.RegularOperatorChain.<init>(RegularOperatorChain.java:60)
+        at org.apache.flink.streaming.runtime.tasks.StreamTask.restoreInternal(StreamTask.java:789)
+        at org.apache.flink.streaming.runtime.tasks.StreamTask.restore(StreamTask.java:771)
+        at org.apache.flink.runtime.taskmanager.Task.runWithSystemExitMonitoring(Task.java:970)
+        at org.apache.flink.runtime.taskmanager.Task.restoreAndInvoke(Task.java:939)
+        at org.apache.flink.runtime.taskmanager.Task.doRun(Task.java:763)
+        at org.apache.flink.runtime.taskmanager.Task.run(Task.java:575)
+        at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: java.lang.ClassNotFoundException: org.apache.flink.streaming.connectors.elasticsearch7.ElasticsearchSink
+        at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:476)
+        at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:593)
+        at org.apache.flink.util.FlinkUserCodeClassLoader.loadClassWithoutExceptionHandling(FlinkUserCodeClassLoader.java:67)
+        at org.apache.flink.util.ChildFirstClassLoader.loadClassWithoutExceptionHandling(ChildFirstClassLoader.java:65)
+        at org.apache.flink.util.FlinkUserCodeClassLoader.loadClass(FlinkUserCodeClassLoader.java:51)
+        at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+        at org.apache.flink.util.FlinkUserCodeClassLoaders$SafetyNetWrapperClassLoader.loadClass(FlinkUserCodeClassLoaders.java:197)
+        at java.base/java.lang.Class.forName0(Native Method)
+        at java.base/java.lang.Class.forName(Class.java:398)
+        at org.apache.flink.util.InstantiationUtil$ClassLoaderObjectInputStream.resolveClass(InstantiationUtil.java:76)
+        at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2025)
+        at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1892)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2223)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1709)
+        at java.base/java.io.ObjectInputStream.defaultReadFields(ObjectInputStream.java:2518)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2412)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2250)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1709)
+        at java.base/java.io.ObjectInputStream.defaultReadFields(ObjectInputStream.java:2518)
+        at java.base/java.io.ObjectInputStream.readSerialData(ObjectInputStream.java:2412)
+        at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2250)
+        at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1709)
+        at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:500)
+        at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:458)
+        at org.apache.flink.util.InstantiationUtil.deserializeObject(InstantiationUtil.java:488)
+        at org.apache.flink.util.InstantiationUtil.deserializeObject(InstantiationUtil.java:472)
+        at org.apache.flink.util.InstantiationUtil.deserializeObject(InstantiationUtil.java:467)
+        at org.apache.flink.util.InstantiationUtil.readObjectFromConfig(InstantiationUtil.java:422)
+        at org.apache.flink.streaming.api.graph.StreamConfig.getStreamOperatorFactory(StreamConfig.java:400)
+        ... 16 more
+2026-03-26 16:30:50,508 INFO  org.apache.flink.runtime.dispatcher.StandaloneDispatcher     [] - Could not store completed job insert-into_default_catalog.default_database.es_ts_saleoutmt(05fdc67208dc4d9fdbebe9fc70669b16).
+java.io.FileNotFoundException: /tmp/executionGraphStore-b60fa249-2fdc-47d0-a7bf-79bcee78d11c/05fdc67208dc4d9fdbebe9fc70669b16 (没有那个文件或目录)
+        at java.io.FileOutputStream.open0(Native Method) ~[?:?]
+        at java.io.FileOutputStream.open(FileOutputStream.java:298) ~[?:?]
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:237) ~[?:?]
+        at java.io.FileOutputStream.<init>(FileOutputStream.java:187) ~[?:?]
+        at org.apache.flink.runtime.dispatcher.FileExecutionGraphInfoStore.storeExecutionGraphInfo(FileExecutionGraphInfoStore.java:281) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.dispatcher.FileExecutionGraphInfoStore.put(FileExecutionGraphInfoStore.java:203) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.dispatcher.Dispatcher.writeToExecutionGraphInfoStore(Dispatcher.java:1458) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.dispatcher.Dispatcher.jobReachedTerminalState(Dispatcher.java:1362) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.dispatcher.Dispatcher.handleJobManagerRunnerResult(Dispatcher.java:750) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.dispatcher.Dispatcher.lambda$runJob$7(Dispatcher.java:700) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:930) ~[?:?]
+        at java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:907) ~[?:?]
+        at java.util.concurrent.CompletableFuture$Completion.run(CompletableFuture.java:478) ~[?:?]
+        at org.apache.flink.util.MdcUtils.lambda$wrapRunnable$1(MdcUtils.java:70) ~[flink-sql-jdbc-driver-bundle-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.rpc.pekko.PekkoRpcActor.lambda$handleRunAsync$4(PekkoRpcActor.java:460) ~[flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.flink.runtime.concurrent.ClassLoadingUtils.runWithContextClassLoader(ClassLoadingUtils.java:68) ~[flink-dist-1.20.1.jar:1.20.1]
+        at org.apache.flink.runtime.rpc.pekko.PekkoRpcActor.handleRunAsync(PekkoRpcActor.java:460) ~[flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.flink.runtime.rpc.pekko.PekkoRpcActor.handleRpcMessage(PekkoRpcActor.java:225) ~[flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.flink.runtime.rpc.pekko.FencedPekkoRpcActor.handleRpcMessage(FencedPekkoRpcActor.java:88) ~[flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.flink.runtime.rpc.pekko.PekkoRpcActor.handleMessage(PekkoRpcActor.java:174) ~[flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.japi.pf.UnitCaseStatement.apply(CaseStatements.scala:33) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.japi.pf.UnitCaseStatement.apply(CaseStatements.scala:29) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at scala.PartialFunction.applyOrElse(PartialFunction.scala:127) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at scala.PartialFunction.applyOrElse$(PartialFunction.scala:126) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.japi.pf.UnitCaseStatement.applyOrElse(CaseStatements.scala:29) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:175) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:176) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:176) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.actor.Actor.aroundReceive(Actor.scala:547) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.actor.Actor.aroundReceive$(Actor.scala:545) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.actor.AbstractActor.aroundReceive(AbstractActor.scala:229) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.actor.ActorCell.receiveMessage(ActorCell.scala:590) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.actor.ActorCell.invoke(ActorCell.scala:557) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.dispatch.Mailbox.processMailbox(Mailbox.scala:272) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.dispatch.Mailbox.run(Mailbox.scala:233) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at org.apache.pekko.dispatch.Mailbox.exec(Mailbox.scala:245) [flink-rpc-akka1aaf3fce-b00b-4e04-b507-8ea186e05770.jar:1.20.1]
+        at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:290) [?:?]
+        at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1020) [?:?]
+        at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1656) [?:?]
+        at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1594) [?:?]
+        at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:183) [?:?]
+2026-03-26 16:30:50,520 INFO  org.apache.flink.runtime.jobmaster.JobMaster                 [] - Stopping the JobMaster for job 'insert-into_default_catalog.default_database.es_ts_saleoutmt' (05fdc67208dc4d9fdbebe9fc70669b16).
+2026-03-26 16:30:50,521 INFO  org.apache.flink.runtime.checkpoint.DefaultCompletedCheckpointStore [] - Shutting down
+2026-03-26 16:30:50,521 INFO  org.apache.flink.runtime.zookeeper.ZooKeeperStateHandleStore [] - Removing /flink/test-flink-cluster/jobs/05fdc67208dc4d9fdbebe9fc70669b16/checkpoints from ZooKeeper
+2026-03-26 16:30:50,522 INFO  org.apache.flink.runtime.source.coordinator.SourceCoordinator [] - Closing SourceCoordinator for source Source: mysql_ts_saleoutmt[23].
+2026-03-26 16:30:50,522 INFO  org.apache.flink.cdc.connectors.mysql.source.enumerator.MySqlSourceEnumerator [] - Closing enumerator...
+2026-03-26 16:30:50,523 INFO  io.debezium.jdbc.JdbcConnection                              [] - Connection gracefully closed
+2026-03-26 16:30:50,523 INFO  org.apache.flink.cdc.connectors.shaded.com.zaxxer.hikari.HikariDataSource [] - connection-pool-192.168.27.54:3306 - Shutdown initiated...
+2026-03-26 16:30:50,529 INFO  org.apache.flink.cdc.connectors.shaded.com.zaxxer.hikari.HikariDataSource [] - connection-pool-192.168.27.54:3306 - Shutdown completed.
+2026-03-26 16:30:50,532 INFO  org.apache.flink.runtime.checkpoint.ZooKeeperCheckpointIDCounter [] - Shutting down.
+2026-03-26 16:30:50,532 INFO  org.apache.flink.runtime.checkpoint.ZooKeeperCheckpointIDCounter [] - Removing /checkpoint_id_counter from ZooKeeper
+2026-03-26 16:30:50,532 INFO  org.apache.flink.runtime.source.coordinator.SourceCoordinator [] - Source coordinator for source Source: mysql_ts_saleoutmt[23] closed.
+2026-03-26 16:30:50,536 INFO  org.apache.flink.runtime.jobmaster.slotpool.DefaultDeclarativeSlotPool [] - Releasing slot [097b1b379fdd1da31901ce276734b9c6].
+2026-03-26 16:30:50,537 INFO  org.apache.flink.runtime.jobmaster.JobMaster                 [] - Disconnect TaskExecutor swd134:36130-f0bb52 because: Stopping JobMaster for job 'insert-into_default_catalog.default_database.es_ts_saleoutmt' (05fdc67208dc4d9fdbebe9fc70669b16).
+2026-03-26 16:30:50,537 INFO  org.apache.flink.runtime.jobmaster.JobMaster                 [] - Close ResourceManager connection 43dcddabc685af7a61d965cdee87bad0: Stopping JobMaster for job 'insert-into_default_catalog.default_database.es_ts_saleoutmt' (05fdc67208dc4d9fdbebe9fc70669b16).
+2026-03-26 16:30:50,537 INFO  org.apache.flink.runtime.leaderretrieval.DefaultLeaderRetrievalService [] - Stopping DefaultLeaderRetrievalService.
+2026-03-26 16:30:50,537 INFO  org.apache.flink.runtime.leaderretrieval.ZooKeeperLeaderRetrievalDriver [] - Closing ZookeeperLeaderRetrievalDriver{connectionInformationPath='/leader/resource_manager/connection_info'}.
+2026-03-26 16:30:50,537 INFO  org.apache.flink.runtime.leaderretrieval.DefaultLeaderRetrievalService [] - Stopping DefaultLeaderRetrievalService.
+2026-03-26 16:30:50,537 INFO  org.apache.flink.runtime.leaderretrieval.ZooKeeperLeaderRetrievalDriver [] - Closing ZookeeperLeaderRetrievalDriver{connectionInformationPath='/leader/job-05fdc67208dc4d9fdbebe9fc70669b16/connection_info'}.
+2026-03-26 16:30:50,539 INFO  org.apache.flink.runtime.resourcemanager.StandaloneResourceManager [] - Disconnect job manager bf78a87a0c64726bc2f314928e284dc8@pekko.tcp://flink@swd133:6123/user/rpc/jobmanager_11 for job 05fdc67208dc4d9fdbebe9fc70669b16 from the resource manager.
+2026-03-26 16:30:50,540 INFO  org.apache.flink.runtime.leaderelection.DefaultLeaderElectionService [] - Deregistering contender with component 'job-05fdc67208dc4d9fdbebe9fc70669b16' from the DefaultLeaderElectionService.
+2026-03-26 16:30:50,540 INFO  org.apache.flink.runtime.resourcemanager.slotmanager.DefaultSlotStatusSyncer [] - Freeing slot 097b1b379fdd1da31901ce276734b9c6.
+2026-03-26 16:30:50,553 INFO  org.apache.flink.runtime.highavailability.zookeeper.ZooKeeperLeaderElectionHaServices [] - Clean up the high availability data for job 05fdc67208dc4d9fdbebe9fc70669b16.
+2026-03-26 16:30:50,557 INFO  org.apache.flink.runtime.highavailability.zookeeper.ZooKeeperLeaderElectionHaServices [] - Finished cleaning up the high availability data for job 05fdc67208dc4d9fdbebe9fc70669b16.
+2026-03-26 16:30:50,569 INFO  org.apache.flink.runtime.jobmanager.DefaultJobGraphStore     [] - Removed job graph 05fdc67208dc4d9fdbebe9fc70669b16 from ZooKeeperStateHandleStore{namespace='flink/test-flink-cluster/jobgraphs'}.
+2026-03-26 16:30:50,581 INFO  org.apache.flink.cdc.connectors.mysql.source.assigners.MySqlChunkSplitter [] - ChunkSplitter has split 0 chunks for table db_stock.ts_saleoutmt
+2026-03-26 16:30:50,581 INFO  org.apache.flink.cdc.connectors.mysql.source.assigners.MySqlChunkSplitter [] - Use unevenly-sized chunks for table db_stock.ts_saleoutmt, the chunk size is 8

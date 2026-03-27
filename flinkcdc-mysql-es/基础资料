@@ -1,0 +1,10 @@
+1. 参考资料
+
+https://blog.csdn.net/qq_50954361/article/details/129486467?ops_request_misc=&request_id=&biz_id=102&utm_term=FlinkCDC&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-129486467.nonlogin&spm=1018.2226.3001.4187
+https://blog.csdn.net/A_art_xiang/article/details/136877379
+https://blog.csdn.net/weixin_30374009/article/details/159338269
+https://juejin.cn/post/7226248402798706743
+
+2. 相关账号密码
+http://192.168.27.133:8081/#/job/running
+ssh -p60066 root@192.168.27.133 Leyo@2021

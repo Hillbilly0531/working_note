@@ -1,0 +1,29 @@
+jobmanager:
+  bind-host: 0.0.0.0
+  execution:
+    failover-strategy: region
+  memory:
+    process:
+      size: 1600m
+parallelism:
+  default: 1
+rest:
+  address: swd133
+  bind-address: 0.0.0.0
+  port: 8081
+taskmanager:
+  bind-host: 0.0.0.0
+  host: swd133
+  data:
+    port: 6124
+  memory:
+    process:
+      size: 1728m
+  numberOfTaskSlots: 2
+cluster.fine-grained-resource-management.enabled: false
+# high-availability: zookeeper
+# high-availability.storageDir: file:///nfs/flink-ha  # HA 鏁版嵁瀛樺偍璺緞
+# high-availability.zookeeper.quorum: swd133:2181,swd134:2181,swd135:2181  # ZooKeeper 闆嗙兢鍦板潃
+# high-availability.cluster-id: test-flink-cluster
+# high-availability.zookeeper.path.root: /flink
+# high-availability.jobmanager.port: 6123
