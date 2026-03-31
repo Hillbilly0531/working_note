@@ -1,0 +1,119 @@
+{
+  "template": "pc_cash_cow_flow",
+  "order": 1,
+  "settings": {
+    "number_of_shards": "5"
+  },
+  "mappings": {
+    "properties": {
+      "@timestamp": {
+        "type": "date"
+      },
+      "@version": {
+        "type": "keyword"
+      },
+      "id": {
+        "type": "long"
+      },
+      "ctime": {
+        "type": "date",
+        "format": "yyyy-MM-dd'T'HH:mm:ss"
+      },
+      "mtime": {
+        "type": "date",
+        "format": "yyyy-MM-dd'T'HH:mm:ss"
+      },
+      "createUser": {
+        "type": "integer"
+      },
+      "status": {
+        "type": "integer"
+      },
+      "providerId": {
+        "type": "integer"
+      },
+      "lyProductCode": {
+        "type": "keyword"
+      },
+      "provDrugCode": {
+        "type": "keyword"
+      },
+      "bindProductInfo": {
+        "type": "keyword"
+      },
+      "supplierCode": {
+        "type": "keyword"
+      },
+      "batchNo": {
+        "type": "keyword"
+      },
+      "ownerId": {
+        "type": "long"
+      },
+      "salesAmount": {
+        "type": "integer"
+      },
+      "cashCowPrice": {
+        "type": "double"
+      },
+      "priceTaxP1": {
+        "type": "double"
+      },
+      "priceTaxP0": {
+        "type": "double"
+      },
+      "profitAmount": {
+        "type": "double"
+      },
+      "withdrawProfitSum": {
+        "type": "double"
+      },
+      "paidAmount": {
+        "type": "double"
+      },
+      "notPaidAmount": {
+        "type": "double"
+      },
+      "tradeType": {
+        "type": "integer"
+      },
+      "uscCode": {
+        "type": "keyword"
+      },
+      "saleDetailId": {
+        "type": "long"
+      },
+      "supplierBankId": {
+        "type": "integer"
+      },
+      "originId": {
+        "type": "integer"
+      },
+      "yearAndMonth": {
+        "type": "keyword"
+      },
+      "ysbBillCode": {
+        "type": "keyword"
+      },
+      "saleOutNo": {
+        "type": "keyword"
+      },
+      "cashCowPrice": {
+        "type": "double"
+      },
+      "sourceType": {
+        "type": "integer"
+      },
+      "salesTime": {
+        "type": "date",
+        "format": "yyyy-MM-dd'T'HH:mm:ss"
+      },
+      "isSelectiveProduct": {
+        "type": "integer"
+      },
+      "isSelectiveBatch": {
+        "type": "integer"
+      }
+    }
+  }
+}

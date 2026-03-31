@@ -1,0 +1,222 @@
+2026-03-31 11:18:34,559 INFO  org.apache.flink.runtime.dispatcher.StandaloneDispatcher     [] - Received JobGraph submission 'insert-into_default_catalog.default_database.es_ts_saleoutmt' (2a014bf4c906cce3db3a16bcab0d6d9a).
+2026-03-31 11:18:34,582 INFO  org.apache.flink.runtime.dispatcher.StandaloneDispatcher     [] - Submitting job 'insert-into_default_catalog.default_database.es_ts_saleoutmt' (2a014bf4c906cce3db3a16bcab0d6d9a).
+2026-03-31 11:18:34,603 INFO  org.apache.flink.runtime.jobmanager.DefaultJobGraphStore     [] - Added JobGraph(jobId: 2a014bf4c906cce3db3a16bcab0d6d9a) to ZooKeeperStateHandleStore{namespace='flink/test-flink-cluster/jobgraphs'}.
+2026-03-31 11:18:34,604 INFO  org.apache.flink.runtime.leaderelection.DefaultLeaderElectionService [] - LeaderContender has been registered under component 'job-2a014bf4c906cce3db3a16bcab0d6d9a' for ZooKeeperLeaderElectionDriver{leaderLatchPath='/flink/test-flink-cluster/leader/latch'}.
+2026-03-31 11:18:34,607 INFO  org.apache.flink.runtime.jobmaster.JobMasterServiceLeadershipRunner [] - JobMasterServiceLeadershipRunner for job 2a014bf4c906cce3db3a16bcab0d6d9a was granted leadership with leader id d0f8ecca-5df8-45cf-bac5-ab2a2b58a5bb. Creating new JobMasterServiceProcess.
+2026-03-31 11:18:34,610 INFO  org.apache.flink.runtime.rpc.pekko.PekkoRpcService           [] - Starting RPC endpoint for org.apache.flink.runtime.jobmaster.JobMaster at pekko://flink/user/rpc/jobmanager_4 .
+2026-03-31 11:18:34,610 INFO  org.apache.flink.runtime.jobmaster.JobMaster                 [] - Initializing job 'insert-into_default_catalog.default_database.es_ts_saleoutmt' (2a014bf4c906cce3db3a16bcab0d6d9a).
+2026-03-31 11:18:34,618 INFO  org.apache.flink.runtime.jobmaster.JobMaster                 [] - Using restart back off time strategy NoRestartBackoffTimeStrategy for insert-into_default_catalog.default_database.es_ts_saleoutmt (2a014bf4c906cce3db3a16bcab0d6d9a).
+2026-03-31 11:18:34,653 INFO  org.apache.flink.runtime.checkpoint.DefaultCompletedCheckpointStoreUtils [] - Recovering checkpoints from ZooKeeperStateHandleStore{namespace='flink/test-flink-cluster/jobs/2a014bf4c906cce3db3a16bcab0d6d9a/checkpoints'}.
+2026-03-31 11:18:34,672 INFO  org.apache.flink.runtime.checkpoint.DefaultCompletedCheckpointStoreUtils [] - Found 0 checkpoints in ZooKeeperStateHandleStore{namespace='flink/test-flink-cluster/jobs/2a014bf4c906cce3db3a16bcab0d6d9a/checkpoints'}.
+2026-03-31 11:18:34,673 INFO  org.apache.flink.runtime.checkpoint.DefaultCompletedCheckpointStoreUtils [] - Trying to fetch 0 checkpoints from storage.
+2026-03-31 11:18:34,673 INFO  org.apache.flink.runtime.util.ZooKeeperUtils                 [] - Initialized DefaultCompletedCheckpointStore in 'ZooKeeperStateHandleStore{namespace='flink/test-flink-cluster/jobs/2a014bf4c906cce3db3a16bcab0d6d9a/checkpoints'}' with /checkpoints.
+2026-03-31 11:18:34,679 INFO  org.apache.flink.runtime.executiongraph.ExecutionGraph       [] - Created execution graph 770d6e8dd588a43dd1601af09fd43deb for job 2a014bf4c906cce3db3a16bcab0d6d9a.
+2026-03-31 11:18:34,680 INFO  org.apache.flink.runtime.jobmaster.JobMaster                 [] - Running initialization on master for job insert-into_default_catalog.default_database.es_ts_saleoutmt (2a014bf4c906cce3db3a16bcab0d6d9a).
+2026-03-31 11:18:34,680 INFO  org.apache.flink.runtime.jobmaster.JobMaster                 [] - Successfully ran initialization on master in 0 ms.
+2026-03-31 11:18:34,692 WARN  org.apache.flink.metrics.MetricGroup                         [] - The operator name Source: mysql_ts_saleoutmt[6] -> DropUpdateBefore[7] -> ConstraintEnforcer[8] -> Sink: es_ts_saleoutmt[8] exceeded the 80 characters length limit and was truncated.
+2026-03-31 11:18:34,693 INFO  org.apache.flink.runtime.scheduler.adapter.DefaultExecutionTopology [] - Built 1 new pipelined regions in 0 ms, total 1 pipelined regions currently.
+2026-03-31 11:18:34,693 INFO  org.apache.flink.runtime.jobmaster.JobMaster                 [] - State backend is set to heap memory org.apache.flink.runtime.state.hashmap.HashMapStateBackend@95a2bcc
+2026-03-31 11:18:34,694 INFO  org.apache.flink.runtime.state.StateBackendLoader            [] - State backend loader loads the state backend as HashMapStateBackend
+2026-03-31 11:18:34,694 INFO  org.apache.flink.runtime.jobmaster.JobMaster                 [] - Checkpoint storage is set to 'jobmanager'
+2026-03-31 11:18:34,705 INFO  org.apache.flink.runtime.checkpoint.CheckpointCoordinator    [] - No checkpoint found during restore.
+2026-03-31 11:18:34,705 INFO  org.apache.flink.runtime.jobmaster.JobMaster                 [] - Using failover strategy org.apache.flink.runtime.executiongraph.failover.RestartPipelinedRegionFailoverStrategy@7241d8e2 for insert-into_default_catalog.default_database.es_ts_saleoutmt (2a014bf4c906cce3db3a16bcab0d6d9a).
+2026-03-31 11:18:34,706 INFO  org.apache.flink.runtime.leaderretrieval.DefaultLeaderRetrievalService [] - Starting DefaultLeaderRetrievalService with ZookeeperLeaderRetrievalDriver{connectionInformationPath='/leader/resource_manager/connection_info'}.
+2026-03-31 11:18:34,706 INFO  org.apache.flink.runtime.jobmaster.JobMaster                 [] - Starting execution of job 'insert-into_default_catalog.default_database.es_ts_saleoutmt' (2a014bf4c906cce3db3a16bcab0d6d9a) under job master id bac5ab2a2b58a5bbd0f8ecca5df845cf.
+2026-03-31 11:18:34,707 INFO  org.apache.flink.runtime.source.coordinator.SourceCoordinator [] - Starting split enumerator for source Source: mysql_ts_saleoutmt[6].
+2026-03-31 11:18:34,708 INFO  org.apache.flink.cdc.connectors.mysql.source.connection.JdbcConnectionPools [] - Create and register connection pool root@192.168.27.54:3306
+2026-03-31 11:18:34,709 INFO  org.apache.flink.cdc.connectors.shaded.com.zaxxer.hikari.HikariDataSource [] - connection-pool-192.168.27.54:3306 - Starting...
+2026-03-31 11:18:34,737 INFO  org.apache.flink.cdc.connectors.shaded.com.zaxxer.hikari.HikariDataSource [] - connection-pool-192.168.27.54:3306 - Start completed.
+2026-03-31 11:18:34,753 INFO  io.debezium.jdbc.JdbcConnection                              [] - Connection gracefully closed
+2026-03-31 11:18:34,753 INFO  org.apache.flink.cdc.connectors.mysql.MySqlValidator         [] - MySQL validation passed.
+2026-03-31 11:18:34,771 INFO  io.debezium.jdbc.JdbcConnection                              [] - Connection gracefully closed
+2026-03-31 11:18:34,782 INFO  org.apache.flink.runtime.jobmaster.JobMaster                 [] - Starting scheduling with scheduling strategy [org.apache.flink.runtime.scheduler.strategy.PipelinedRegionSchedulingStrategy]
+2026-03-31 11:18:34,782 INFO  org.apache.flink.runtime.executiongraph.ExecutionGraph       [] - Job insert-into_default_catalog.default_database.es_ts_saleoutmt (2a014bf4c906cce3db3a16bcab0d6d9a) switched from state CREATED to RUNNING.
+2026-03-31 11:18:34,783 INFO  org.apache.flink.runtime.executiongraph.ExecutionGraph       [] - Source: mysql_ts_saleoutmt[6] -> DropUpdateBefore[7] -> ConstraintEnforcer[8] -> Sink: es_ts_saleoutmt[8] (1/1) (770d6e8dd588a43dd1601af09fd43deb_cbc357ccb763df2852fee8c4fc7d55f2_0_0) switched from CREATED to SCHEDULED.
+2026-03-31 11:18:34,783 INFO  org.apache.flink.runtime.jobmaster.JobMaster                 [] - Connecting to ResourceManager pekko.tcp://flink@swd133:6123/user/rpc/resourcemanager_0(bac5ab2a2b58a5bbd0f8ecca5df845cf)
+2026-03-31 11:18:34,807 INFO  org.apache.flink.runtime.jobmaster.JobMaster                 [] - Resolved ResourceManager address, beginning registration
+2026-03-31 11:18:34,808 INFO  org.apache.flink.runtime.leaderretrieval.DefaultLeaderRetrievalService [] - Starting DefaultLeaderRetrievalService with ZookeeperLeaderRetrievalDriver{connectionInformationPath='/leader/job-2a014bf4c906cce3db3a16bcab0d6d9a/connection_info'}.
+2026-03-31 11:18:34,808 INFO  org.apache.flink.runtime.resourcemanager.StandaloneResourceManager [] - Registering job manager bac5ab2a2b58a5bbd0f8ecca5df845cf@pekko.tcp://flink@swd133:6123/user/rpc/jobmanager_4 for job 2a014bf4c906cce3db3a16bcab0d6d9a.
+2026-03-31 11:18:34,831 INFO  org.apache.flink.runtime.resourcemanager.StandaloneResourceManager [] - Registered job manager bac5ab2a2b58a5bbd0f8ecca5df845cf@pekko.tcp://flink@swd133:6123/user/rpc/jobmanager_4 for job 2a014bf4c906cce3db3a16bcab0d6d9a.
+2026-03-31 11:18:34,832 INFO  org.apache.flink.runtime.jobmaster.JobMaster                 [] - JobManager successfully registered at ResourceManager, leader id: bac5ab2a2b58a5bbd0f8ecca5df845cf.
+2026-03-31 11:18:34,832 INFO  org.apache.flink.runtime.resourcemanager.slotmanager.FineGrainedSlotManager [] - Received resource requirements from job 2a014bf4c906cce3db3a16bcab0d6d9a: [ResourceRequirement{resourceProfile=ResourceProfile{UNKNOWN}, numberOfRequiredSlots=1}]
+2026-03-31 11:18:34,854 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - Read list of available databases
+2026-03-31 11:18:34,895 INFO  org.apache.flink.runtime.resourcemanager.slotmanager.FineGrainedSlotManager [] - Matching resource requirements against available resources.
+Missing resources:
+	 Job 2a014bf4c906cce3db3a16bcab0d6d9a
+		ResourceRequirement{resourceProfile=ResourceProfile{UNKNOWN}, numberOfRequiredSlots=1}
+Current resources:
+	TaskManager swd133:44326-64745d
+		Available: ResourceProfile{cpuCores=5, taskHeapMemory=320.000mb (335544312 bytes), taskOffHeapMemory=0 bytes, managedMemory=426.667mb (447392434 bytes), networkMemory=106.667mb (111848109 bytes)}
+		Total:     ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+	TaskManager swd135:41585-641ef6
+		Available: ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+		Total:     ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+	TaskManager swd134:41127-98dbdd
+		Available: ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+		Total:     ResourceProfile{cpuCores=6, taskHeapMemory=384.000mb (402653174 bytes), taskOffHeapMemory=0 bytes, managedMemory=512.000mb (536870920 bytes), networkMemory=128.000mb (134217730 bytes)}
+2026-03-31 11:18:34,895 INFO  org.apache.flink.runtime.resourcemanager.slotmanager.DefaultSlotStatusSyncer [] - Starting allocation of slot 8476ea4990baa10cd3215dd1a0fe1d03 from swd133:44326-64745d for job 2a014bf4c906cce3db3a16bcab0d6d9a with resource profile ResourceProfile{cpuCores=1, taskHeapMemory=64.000mb (67108862 bytes), taskOffHeapMemory=0 bytes, managedMemory=85.333mb (89478486 bytes), networkMemory=21.333mb (22369621 bytes)}.
+2026-03-31 11:18:34,900 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 list of available databases is: [db_stock]
+2026-03-31 11:18:34,900 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - Read list of available tables in each database
+2026-03-31 11:18:34,909 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.business_invoice_type' is filtered out of table capturing
+2026-03-31 11:18:34,909 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.oms_add_stock' is filtered out of table capturing
+2026-03-31 11:18:34,909 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.oms_stock_log' is filtered out of table capturing
+2026-03-31 11:18:34,909 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_account_detail' is filtered out of table capturing
+2026-03-31 11:18:34,909 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_account_flow' is filtered out of table capturing
+2026-03-31 11:18:34,909 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_account_flow_by_month' is filtered out of table capturing
+2026-03-31 11:18:34,909 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_account_ledger' is filtered out of table capturing
+2026-03-31 11:18:34,909 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_alexecdt' is filtered out of table capturing
+2026-03-31 11:18:34,909 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_alexecmt' is filtered out of table capturing
+2026-03-31 11:18:34,909 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_anglebalance' is filtered out of table capturing
+2026-03-31 11:18:34,909 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_anglebalance_contrast' is filtered out of table capturing
+2026-03-31 11:18:34,909 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_anglebalance_replay' is filtered out of table capturing
+2026-03-31 11:18:34,909 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_anglebalance_total_contrast' is filtered out of table capturing
+2026-03-31 11:18:34,909 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_apgoodsdt' is filtered out of table capturing
+2026-03-31 11:18:34,909 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_apgoodsmt' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_apgoodsmt_ext' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_apgoodsmt_replay' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_batch_id_mapping' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_batch_no_info' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_batchcode' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_batchcode_replay' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_bill_record' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_constant_config' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_db_to_es' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_docking_value' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_error_message' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_formreview' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_goodacctdt' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_goodacctmt' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_gsp_not_acpdt' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_gsp_not_acpmt' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_gsp_not_acpmt_replay' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_gsp_out_dt' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_gsp_out_mt' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_gspin_replay' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_gspindt' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_gspinmt' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_internal_transfer_orderout' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_inventory_snapshot' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_invntryapp_replay' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_invntryappdt' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_invntryappmt' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_invntryexecdt' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_invntryexecdt_temp1' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_invntryexecmt' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_invntryexecmt_replay' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_invntryexecmt_temp1' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_locatbalance' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_loss_profit' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_movein_replay' is filtered out of table capturing
+2026-03-31 11:18:34,910 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_moveindt' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_moveinmt' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_moveout_replay' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_moveoutdt' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_moveoutmt' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_not_intercept_recipe_type' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_ogbalance' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_outorder_send_info' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_outorder_send_info1' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_pchorder_replay' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_poll_erp_stock_batch_message' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_pt_allowance' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purchase_analyst' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purchase_analyst_whse' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purin_replay' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purindt' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purinmt' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purmarkmt' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purmarkmt_replay' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purnotes_replay' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purnotesdt' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purnotesmt' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purorder_replay' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purorderdt' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purorderdt_extend' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purordermt' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purordermt_extend' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purtwodt' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_purtwomt' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_sale_rtndt' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_sale_rtnmt' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_sale_rtnmt_replay' is filtered out of table capturing
+2026-03-31 11:18:34,911 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_salenotesdt' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_salenotesmt' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_salenotesmt_replay' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_saleout_replay' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_saleoutdt' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_saleoutdt_ext' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_saleoutdt_ext_bak' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 including table 'db_stock.ts_saleoutmt' for further processing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_salertndt_extend' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_salertnmt_extend' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_salestwodt' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_salestwomt' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_solar_api_docking_result' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_solar_api_out_order' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_solar_api_sale_return' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_static_invntry_check_fail' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_static_invntry_task' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_static_invntry_task_node' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_stock_batch_change' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_stock_batch_id_log' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_stock_batch_lock' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_stock_batch_log' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_stock_batch_status' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_stock_goods' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_stock_goods_salable' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_stock_message' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_stock_message_error' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_stock_message_rows' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_stock_whole' is filtered out of table capturing
+2026-03-31 11:18:34,912 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_storbalance' is filtered out of table capturing
+2026-03-31 11:18:34,913 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_update_receive_msg' is filtered out of table capturing
+2026-03-31 11:18:34,913 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_warehouse_receive_info' is filtered out of table capturing
+2026-03-31 11:18:34,913 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_warehouse_receive_info1' is filtered out of table capturing
+2026-03-31 11:18:34,913 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_wms_inventory_result' is filtered out of table capturing
+2026-03-31 11:18:34,913 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_wms_inventory_result_detail' is filtered out of table capturing
+2026-03-31 11:18:34,913 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_wms_purchase_check_put_result' is filtered out of table capturing
+2026-03-31 11:18:34,913 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_wms_purchase_check_reason' is filtered out of table capturing
+2026-03-31 11:18:34,913 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_wms_purchase_receive' is filtered out of table capturing
+2026-03-31 11:18:34,913 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_wms_purchase_receive_item' is filtered out of table capturing
+2026-03-31 11:18:34,913 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_wms_swap_move_profit_loss' is filtered out of table capturing
+2026-03-31 11:18:34,913 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_ysb_ddmx_deliverfee' is filtered out of table capturing
+2026-03-31 11:18:34,913 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_ysb_order_subsidy' is filtered out of table capturing
+2026-03-31 11:18:34,913 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_ysb_pch_order' is filtered out of table capturing
+2026-03-31 11:18:34,913 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_ysb_pch_order_detail' is filtered out of table capturing
+2026-03-31 11:18:34,913 INFO  org.apache.flink.cdc.connectors.mysql.source.utils.TableDiscoveryUtils [] - 	 'db_stock.ts_ysb_pchoprlog' is filtered out of table capturing
+2026-03-31 11:18:34,969 INFO  io.debezium.jdbc.JdbcConnection                              [] - Connection gracefully closed
+2026-03-31 11:18:34,975 INFO  org.apache.flink.cdc.connectors.mysql.source.assigners.MySqlSnapshotSplitAssigner [] - Start splitting table db_stock.ts_saleoutmt into chunks...
+2026-03-31 11:18:35,088 INFO  org.apache.flink.runtime.executiongraph.ExecutionGraph       [] - Source: mysql_ts_saleoutmt[6] -> DropUpdateBefore[7] -> ConstraintEnforcer[8] -> Sink: es_ts_saleoutmt[8] (1/1) (770d6e8dd588a43dd1601af09fd43deb_cbc357ccb763df2852fee8c4fc7d55f2_0_0) switched from SCHEDULED to DEPLOYING.
+2026-03-31 11:18:35,089 INFO  org.apache.flink.runtime.executiongraph.ExecutionGraph       [] - Deploying Source: mysql_ts_saleoutmt[6] -> DropUpdateBefore[7] -> ConstraintEnforcer[8] -> Sink: es_ts_saleoutmt[8] (1/1) (attempt #0) with attempt id 770d6e8dd588a43dd1601af09fd43deb_cbc357ccb763df2852fee8c4fc7d55f2_0_0 and vertex id cbc357ccb763df2852fee8c4fc7d55f2_0 to swd133:44326-64745d @ swd133 (dataPort=6124) with allocation id 8476ea4990baa10cd3215dd1a0fe1d03
+2026-03-31 11:18:35,185 INFO  org.apache.flink.cdc.connectors.mysql.source.assigners.MySqlChunkSplitter [] - The distribution factor of table db_stock.ts_saleoutmt is 88132.2709 according to the min split key 1, max split key 2025103320 and approximate row count 22978
+2026-03-31 11:18:35,185 INFO  org.apache.flink.cdc.connectors.mysql.source.assigners.MySqlChunkSplitter [] - The actual distribution factor for table db_stock.ts_saleoutmt is 88132.2709, the lower bound of evenly distribution factor is 0.05, the upper bound of evenly distribution factor is 1000.0
+2026-03-31 11:18:35,185 INFO  org.apache.flink.cdc.connectors.mysql.source.assigners.MySqlChunkSplitter [] - Use unevenly-sized chunks for table db_stock.ts_saleoutmt, the chunk size is 8096 from null
+2026-03-31 11:18:35,287 INFO  org.apache.flink.runtime.executiongraph.ExecutionGraph       [] - Source: mysql_ts_saleoutmt[6] -> DropUpdateBefore[7] -> ConstraintEnforcer[8] -> Sink: es_ts_saleoutmt[8] (1/1) (770d6e8dd588a43dd1601af09fd43deb_cbc357ccb763df2852fee8c4fc7d55f2_0_0) switched from DEPLOYING to INITIALIZING.
+2026-03-31 11:18:35,314 INFO  org.apache.flink.cdc.connectors.mysql.source.assigners.MySqlChunkSplitter [] - ChunkSplitter has split 0 chunks for table db_stock.ts_saleoutmt
+2026-03-31 11:18:35,315 INFO  org.apache.flink.cdc.connectors.mysql.source.assigners.MySqlChunkSplitter [] - Use unevenly-sized chunks for table db_stock.ts_saleoutmt, the chunk size is 8096 from 293204115
+2026-03-31 11:18:35,343 INFO  org.apache.flink.cdc.connectors.mysql.source.assigners.MySqlChunkSplitter [] - Use unevenly-sized chunks for table db_stock.ts_saleoutmt, the chunk size is 8096 from 293212210
+2026-03-31 11:18:35,358 INFO  org.apache.flink.cdc.connectors.mysql.source.assigners.MySqlSnapshotSplitAssigner [] - Split table db_stock.ts_saleoutmt into 3 chunks, time cost: 382ms.
+2026-03-31 11:18:35,388 INFO  org.apache.flink.runtime.source.coordinator.SourceCoordinator [] - Source Source: mysql_ts_saleoutmt[6] registering reader for parallel task 0 (#0) @ swd133
+2026-03-31 11:18:35,388 INFO  org.apache.flink.runtime.source.coordinator.SourceCoordinator [] - Source Source: mysql_ts_saleoutmt[6] received split request from parallel task 0 (#0)
+2026-03-31 11:18:35,389 INFO  org.apache.flink.runtime.executiongraph.ExecutionGraph       [] - Source: mysql_ts_saleoutmt[6] -> DropUpdateBefore[7] -> ConstraintEnforcer[8] -> Sink: es_ts_saleoutmt[8] (1/1) (770d6e8dd588a43dd1601af09fd43deb_cbc357ccb763df2852fee8c4fc7d55f2_0_0) switched from INITIALIZING to RUNNING.
+2026-03-31 11:18:35,395 INFO  org.apache.flink.cdc.connectors.mysql.source.enumerator.MySqlSourceEnumerator [] - The enumerator assigns split MySqlSnapshotSplit{tableId=db_stock.ts_saleoutmt, splitId='db_stock.ts_saleoutmt:0', splitKeyType=[`id` BIGINT NOT NULL], splitStart=null, splitEnd=[293204115], highWatermark=null} to subtask 0
+2026-03-31 11:18:40,746 INFO  org.apache.flink.cdc.connectors.mysql.source.enumerator.MySqlSourceEnumerator [] - The enumerator under INITIAL_ASSIGNING receives finished split offsets FinishedSnapshotSplitsReportEvent{finishedOffsets={db_stock.ts_saleoutmt:0={ts_sec=1774927116, file=master-bin.005306, pos=481129, kind=SPECIFIC, gtids=16dbfe0f-f8b2-11ee-a389-00155d00974b:1-4574553906,
+ca03838d-fa94-11ee-bdc5-00155d249a0c:1-413604375, row=0, event=0}}} from subtask 0.
+2026-03-31 11:18:40,747 INFO  org.apache.flink.runtime.source.coordinator.SourceCoordinator [] - Source Source: mysql_ts_saleoutmt[6] received split request from parallel task 0 (#0)
+2026-03-31 11:18:40,754 INFO  org.apache.flink.cdc.connectors.mysql.source.enumerator.MySqlSourceEnumerator [] - The enumerator assigns split MySqlSnapshotSplit{tableId=db_stock.ts_saleoutmt, splitId='db_stock.ts_saleoutmt:1', splitKeyType=[`id` BIGINT NOT NULL], splitStart=[293204115], splitEnd=[293212210], highWatermark=null} to subtask 0
+2026-03-31 11:18:42,768 WARN  org.apache.pekko.remote.ReliableDeliverySupervisor           [] - Association with remote system [pekko.tcp://flink-metrics@swd135:38429] has failed, address is now gated for [50] ms. Reason: [Association failed with [pekko.tcp://flink-metrics@swd135:38429]] Caused by: [org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedNoRouteToHostException: 没有到主机的路由: swd135/192.168.27.135:38429, caused by: java.net.NoRouteToHostException: 没有到主机的路由]
+2026-03-31 11:18:42,768 WARN  org.apache.pekko.remote.ReliableDeliverySupervisor           [] - Association with remote system [pekko.tcp://flink-metrics@swd134:45566] has failed, address is now gated for [50] ms. Reason: [Association failed with [pekko.tcp://flink-metrics@swd134:45566]] Caused by: [org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedNoRouteToHostException: 没有到主机的路由: swd134/192.168.27.134:45566, caused by: java.net.NoRouteToHostException: 没有到主机的路由]
+2026-03-31 11:18:46,127 INFO  org.apache.flink.cdc.connectors.mysql.source.enumerator.MySqlSourceEnumerator [] - The enumerator under INITIAL_ASSIGNING receives finished split offsets FinishedSnapshotSplitsReportEvent{finishedOffsets={db_stock.ts_saleoutmt:1={ts_sec=1774927121, file=master-bin.005306, pos=645791, kind=SPECIFIC, gtids=16dbfe0f-f8b2-11ee-a389-00155d00974b:1-4574553998,
+ca03838d-fa94-11ee-bdc5-00155d249a0c:1-413604375, row=0, event=0}}} from subtask 0.
+2026-03-31 11:18:46,128 INFO  org.apache.flink.runtime.source.coordinator.SourceCoordinator [] - Source Source: mysql_ts_saleoutmt[6] received split request from parallel task 0 (#0)
+2026-03-31 11:18:46,131 INFO  org.apache.flink.cdc.connectors.mysql.source.enumerator.MySqlSourceEnumerator [] - The enumerator assigns split MySqlSnapshotSplit{tableId=db_stock.ts_saleoutmt, splitId='db_stock.ts_saleoutmt:2', splitKeyType=[`id` BIGINT NOT NULL], splitStart=[293212210], splitEnd=null, highWatermark=null} to subtask 0
+2026-03-31 11:18:51,327 INFO  org.apache.flink.cdc.connectors.mysql.source.enumerator.MySqlSourceEnumerator [] - The enumerator under INITIAL_ASSIGNING receives finished split offsets FinishedSnapshotSplitsReportEvent{finishedOffsets={db_stock.ts_saleoutmt:2={ts_sec=1774927126, file=master-bin.005306, pos=2668943, kind=SPECIFIC, gtids=16dbfe0f-f8b2-11ee-a389-00155d00974b:1-4574554042,
+ca03838d-fa94-11ee-bdc5-00155d249a0c:1-413604375, row=0, event=0}}} from subtask 0.
+2026-03-31 11:18:51,328 INFO  org.apache.flink.cdc.connectors.mysql.source.assigners.AssignerStatus [] - Assigner status changes from INITIAL_ASSIGNING to INITIAL_ASSIGNING_FINISHED
+2026-03-31 11:18:51,328 INFO  org.apache.flink.cdc.connectors.mysql.source.assigners.MySqlSnapshotSplitAssigner [] - Snapshot split assigner received all splits finished and the job parallelism is 1, snapshot split assigner is turn into finished status.
+2026-03-31 11:18:51,328 INFO  org.apache.flink.runtime.source.coordinator.SourceCoordinator [] - Source Source: mysql_ts_saleoutmt[6] received split request from parallel task 0 (#0)
+2026-03-31 11:18:51,332 INFO  org.apache.flink.cdc.connectors.mysql.source.enumerator.MySqlSourceEnumerator [] - The enumerator assigns split MySqlBinlogSplit{splitId='binlog-split', offset={ts_sec=1774927116, file=master-bin.005306, pos=481129, kind=SPECIFIC, gtids=16dbfe0f-f8b2-11ee-a389-00155d00974b:1-4574553906,
+ca03838d-fa94-11ee-bdc5-00155d249a0c:1-413604375, row=0, event=0}, endOffset={ts_sec=0, file=, pos=-9223372036854775808, kind=NON_STOPPING, row=0, event=0}, isSuspended=false} to subtask 0
+2026-03-31 11:18:51,519 INFO  org.apache.flink.cdc.connectors.mysql.source.enumerator.MySqlSourceEnumerator [] - The enumerator receives notice from subtask 0 for the binlog split assignment. 
+2026-03-31 11:19:01,683 WARN  org.apache.pekko.remote.ReliableDeliverySupervisor           [] - Association with remote system [pekko.tcp://flink-metrics@swd134:45566] has failed, address is now gated for [50] ms. Reason: [Association failed with [pekko.tcp://flink-metrics@swd134:45566]] Caused by: [org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedNoRouteToHostException: 没有到主机的路由: swd134/192.168.27.134:45566, caused by: java.net.NoRouteToHostException: 没有到主机的路由]
+2026-03-31 11:19:01,683 WARN  org.apache.pekko.remote.ReliableDeliverySupervisor           [] - Association with remote system [pekko.tcp://flink-metrics@swd135:38429] has failed, address is now gated for [50] ms. Reason: [Association failed with [pekko.tcp://flink-metrics@swd135:38429]] Caused by: [org.apache.flink.shaded.netty4.io.netty.channel.AbstractChannel$AnnotatedNoRouteToHostException: 没有到主机的路由: swd135/192.168.27.135:38429, caused by: java.net.NoRouteToHostException: 没有到主机的路由]
