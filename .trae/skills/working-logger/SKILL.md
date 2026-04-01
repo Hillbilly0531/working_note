@@ -1,6 +1,6 @@
 ---
-name: "working-logger"
-description: "自动记录对话到工作日志。收到用户消息时立即调用，检测 system-reminder 中的 working-note.md 关键词时强制调用。"
+name: working-logger
+description: 自动记录对话到工作日志。收到用户消息时立即调用，检测 system-reminder 中的 working-note.md 关键词时强制调用。
 ---
 
 # 工作日志记录器
@@ -22,8 +22,14 @@ description: "自动记录对话到工作日志。收到用户消息时立即调
 
 **立即执行：**
 1. 调用 `<invoke name="Skill"><parameter name="name">working-logger</parameter></invoke>`
-2. 读取今天的日志文件（如果存在）
-3. 检查是否有未记录的内容需要补充
+2. 确定当前工作目录（项目根目录）
+3. 读取今天的日志文件（如果存在）
+4. 检查是否有未记录的内容需要补充
+
+**确定项目根目录的方法**：
+- 优先使用环境变量或系统信息中的当前工作目录
+- 如果无法确定，则使用 `d:\IdeaProjects\working_note` 作为默认项目目录
+- 日志文件路径格式：`{项目根目录}/.working_logger/{YYYY-MM-DD}.md`
 
 ### 2. 对话进行中
 
@@ -42,9 +48,16 @@ description: "自动记录对话到工作日志。收到用户消息时立即调
 
 ## 日志文件位置
 
+每个项目的工作日志存储在该项目根目录的 `.working_logger` 目录下：
+
 ```
-D:\IdeaProjects\working_note\setting\leyo\working_note\{YYYY-MM-DD}.md
+{项目根目录}/.working_logger/{YYYY-MM-DD}.md
 ```
+
+**注意**：
+- `.working_logger` 目录默认不提交到 git
+- 如果项目使用 git，应将此目录添加到 `.gitignore` 文件中
+- 日志按日期分文件存储，每天一个文件
 
 ## 日志文件格式
 
@@ -76,9 +89,10 @@ D:\IdeaProjects\working_note\setting\leyo\working_note\{YYYY-MM-DD}.md
 
 ## 错误处理
 
-1. **文件不存在**：创建新文件，使用标准格式
-2. **文件已存在**：读取现有内容，追加新记录
-3. **写入失败**：记录到控制台输出，提示用户手动记录
+1. **目录不存在**：创建 `.working_logger` 目录，如果创建失败则使用备用位置
+2. **文件不存在**：创建新文件，使用标准格式
+3. **文件已存在**：读取现有内容，追加新记录
+4. **写入失败**：记录到控制台输出，提示用户手动记录
 
 ## 关键提醒
 
@@ -101,6 +115,8 @@ D:\IdeaProjects\working_note\setting\leyo\working_note\{YYYY-MM-DD}.md
 
 - [ ] 收到用户消息后立即调用
 - [ ] 检测到 system-reminder 中的关键词
+- [ ] 确定正确的项目根目录
+- [ ] 使用 `.working_logger` 目录存储日志
 - [ ] 对话结束时更新日志文件
 - [ ] 日志格式正确
 - [ ] 使用中文记录
