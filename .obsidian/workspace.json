@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "reading/游戏设计/塞尔达/地图吸引力/gcores_article_148528.md",
-                "mode": "source",
+                "file": "reading/狗头人/狗头人阅读笔记.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "gcores_article_148528"
+              "title": "狗头人阅读笔记"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "reading/游戏设计/塞尔达/地图吸引力/gcores_article_148528.md",
+                "file": "reading/狗头人/狗头人阅读笔记.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "gcores_article_148528 的反向链接列表"
+              "title": "狗头人阅读笔记 的反向链接列表"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "reading/游戏设计/塞尔达/地图吸引力/gcores_article_148528.md",
+                "file": "reading/狗头人/狗头人阅读笔记.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "gcores_article_148528 的出链列表"
+              "title": "狗头人阅读笔记 的出链列表"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "reading/游戏设计/塞尔达/地图吸引力/gcores_article_148528.md",
+                "file": "reading/狗头人/狗头人阅读笔记.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "gcores_article_148528 的大纲"
+              "title": "狗头人阅读笔记 的大纲"
             }
           }
         ]
@@ -185,12 +185,14 @@
   },
   "active": "da74a323c08358ef",
   "lastOpenFiles": [
+    "reading/狗头人/狗头人阅读笔记.md",
+    "未命名.canvas",
+    "reading/游戏设计/塞尔达/地图吸引力/gcores_article_148528.md",
     "reading/游戏设计/塞尔达/地图吸引力/gcores_article_148528_obsidian.md",
     "reading/游戏设计/塞尔达/地图吸引力/gcores_article_148528_assets/a1d3399c-7b99-4ff4-a370-380b0d82a552.png",
     "reading/游戏设计/塞尔达/地图吸引力/gcores_article_148528_assets/8559ad7d-ba65-4713-91ba-b5ac46a9e09e.png",
     "reading/游戏设计/塞尔达/地图吸引力/gcores_article_148528_assets/8a712d28-5ba2-4192-a3b5-3c4751f3f298.jpg",
     "reading/游戏设计/塞尔达/地图吸引力/gcores_article_148528_assets/7cca7b04-e442-4e36-bd2f-e813109fc356.png",
-    "reading/狗头人/狗头人阅读笔记.md",
     "reading/狗头人/狗头人之世界创建指南 (多人合著) (Z-Library).pdf",
     "skills-lock.json"
   ]
