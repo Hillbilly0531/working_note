@@ -1,0 +1,4 @@
+interface:
+  display_name: "观远接口联调"
+  short_description: "用于观远开放平台两步调用联调，先登录换取访问Token，再获取数据集数据。"
+  default_prompt: "使用 $guandata-api-skill 帮我完成观远两步接口联调，并返回 get_dataset_data 的结果。"

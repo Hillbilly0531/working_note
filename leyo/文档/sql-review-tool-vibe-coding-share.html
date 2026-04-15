@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL Review Tool | Vibe Coding 内部复盘</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: rgba(10, 22, 40, 0.76);
+      --line: rgba(125, 211, 252, 0.18);
+      --text: #e5f0ff;
+      --muted: rgba(229, 240, 255, 0.68);
+      --cyan: #7dd3fc;
+      --green: #22c55e;
+      --amber: #f59e0b;
+      --pink: #f472b6;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      --radius: 28px;
+      --slide-pad: clamp(28px, 4vw, 56px);
+      --transition: 560ms cubic-bezier(.2, .8, .2, 1);
+      --font-display: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+      --font-body: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans SC", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(244, 114, 182, 0.14), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(34, 197, 94, 0.12), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    body::before {
+      background-image:
+        linear-gradient(rgba(125, 211, 252, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(125, 211, 252, 0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.92), transparent);
+    }
+
+    body::after {
+      background:
+        linear-gradient(120deg, transparent 0%, rgba(125, 211, 252, 0.06) 45%, transparent 55%),
+        linear-gradient(300deg, transparent 0%, rgba(34, 197, 94, 0.06) 55%, transparent 65%);
+      opacity: 0.45;
+      mix-blend-mode: screen;
+    }
+
+    .deck {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .slides {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: var(--slide-pad);
+      display: grid;
+      opacity: 0;
+      transform: translateX(8%) scale(0.98);
+      pointer-events: none;
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      pointer-events: auto;
+      z-index: 2;
+    }
+
+    .slide.exit-left { transform: translateX(-8%) scale(0.985); }
+
+    .slide-shell {
+      position: relative;
+      width: min(90vw, 1480px);
+      aspect-ratio: 16 / 9;
+      margin: auto;
+      padding: clamp(34px, 4vw, 60px);
+      background:
+        linear-gradient(180deg, rgba(14, 31, 54, 0.84), rgba(7, 17, 31, 0.78)),
+        rgba(7, 17, 31, 0.72);
+      border: 1px solid rgba(125, 211, 252, 0.16);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(20px, 2.4vw, 34px);
+    }
+
+    .slide-shell::before,
+    .slide-shell::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(60px);
+      pointer-events: none;
+      opacity: 0.65;
+    }
+
+    .slide-shell::before {
+      width: 260px;
+      height: 260px;
+      top: -80px;
+      right: -40px;
+      background: rgba(56, 189, 248, 0.15);
+    }
+
+    .slide-shell::after {
+      width: 220px;
+      height: 220px;
+      left: -60px;
+      bottom: -80px;
+      background: rgba(244, 114, 182, 0.12);
+    }
+
+    .chrome {
+      position: absolute;
+      inset: 18px 22px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(229, 240, 255, 0.52);
+      z-index: 4;
+      font-family: var(--font-display);
+    }
+
+    .chrome-badge {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .chrome-badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 16px rgba(125, 211, 252, 0.8);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      align-self: flex-start;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(125, 211, 252, 0.18);
+      background: rgba(7, 17, 31, 0.42);
+      color: var(--cyan);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-family: var(--font-display);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.8;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+    h1, h2, h3, .metric-number, .card-value, .strip-title, .compare-top, .big-quote, .indicator strong {
+      font-family: var(--font-display);
+    }
+    h1 {
+      font-size: clamp(42px, 4.6vw, 74px);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      max-width: 11ch;
+      font-weight: 700;
+    }
+    h2 {
+      font-size: clamp(26px, 2.8vw, 42px);
+      line-height: 1.16;
+      letter-spacing: -0.03em;
+      max-width: 24ch;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+    h3 { font-size: clamp(20px, 2vw, 28px); line-height: 1.15; letter-spacing: -0.02em; font-weight: 700; }
+
+    .lede {
+      max-width: 58ch;
+      font-size: clamp(16px, 1.18vw, 19px);
+      line-height: 1.78;
+      color: var(--muted);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
+      align-items: stretch;
+      gap: clamp(28px, 3.2vw, 46px);
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-copy, .hero-visual, .grid-2, .grid-3, .grid-4, .stack { min-height: 0; }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 22px;
+      padding-right: clamp(0px, 1.2vw, 18px);
+    }
+
+    .kicker {
+      font-size: clamp(13px, 1vw, 16px);
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: rgba(229, 240, 255, 0.48);
+      font-family: var(--font-display);
+    }
+
+    .hero-subtitle {
+      max-width: 36ch;
+      font-size: clamp(18px, 1.3vw, 23px);
+      line-height: 1.5;
+      color: rgba(229, 240, 255, 0.82);
+    }
+
+    .hero-quote {
+      max-width: 36ch;
+      padding: 20px 24px;
+      border-radius: 22px;
+      border: 1px solid rgba(125, 211, 252, 0.16);
+      background: linear-gradient(135deg, rgba(125, 211, 252, 0.08), rgba(7, 17, 31, 0.22));
+      color: var(--text);
+      font-size: clamp(17px, 1.28vw, 22px);
+      line-height: 1.7;
+    }
+
+    .grid-2, .grid-3, .grid-4 {
+      display: grid;
+      gap: 18px;
+      flex: 1;
+      align-items: stretch;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+
+    .stack {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      flex: 1;
+    }
+
+    .card {
+      position: relative;
+      padding: clamp(22px, 2vw, 30px);
+      border-radius: 24px;
+      border: 1px solid rgba(125, 211, 252, 0.14);
+      background: linear-gradient(180deg, rgba(11, 22, 39, 0.84), rgba(8, 17, 31, 0.64));
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 0;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(125, 211, 252, 0.09), transparent 34%, transparent 68%, rgba(34, 197, 94, 0.06));
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    .card > * { position: relative; z-index: 1; }
+    .card-label {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(229, 240, 255, 0.46);
+      margin-bottom: 12px;
+      font-family: var(--font-display);
+    }
+    .card-value {
+      font-size: clamp(22px, 1.8vw, 32px);
+      line-height: 1.18;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: -0.03em;
+      max-width: 18ch;
+    }
+    .card-copy {
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: clamp(14px, 0.98vw, 17px);
+      max-width: 36ch;
+    }
+
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      justify-content: center;
+      min-height: 100%;
+    }
+
+    .metric-number { font-size: clamp(38px, 3.6vw, 62px); line-height: 0.92; color: var(--cyan); letter-spacing: -0.05em; }
+    .metric-title { font-size: clamp(20px, 1.6vw, 28px); letter-spacing: -0.03em; font-family: var(--font-display); }
+
+    .strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      flex: 1;
+      align-items: stretch;
+    }
+
+    .strip-step {
+      padding: 22px 20px 24px;
+      border-radius: 22px;
+      background: rgba(11, 22, 39, 0.7);
+      border: 1px solid rgba(125, 211, 252, 0.16);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      position: relative;
+    }
+
+    .strip-step::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -10px;
+      width: 20px;
+      height: 1px;
+      background: rgba(125, 211, 252, 0.24);
+    }
+
+    .strip-step:last-child::after { display: none; }
+    .strip-index { font-size: 11px; letter-spacing: 0.22em; color: rgba(229, 240, 255, 0.46); text-transform: uppercase; font-family: var(--font-display); }
+    .strip-title { font-size: clamp(23px, 2vw, 32px); }
+    .strip-copy { color: var(--muted); line-height: 1.64; font-size: clamp(14px, 1vw, 17px); }
+
+    .compare-card { display: flex; flex-direction: column; gap: 18px; height: 100%; }
+    .compare-top { font-size: clamp(20px, 1.7vw, 28px); color: var(--cyan); letter-spacing: -0.03em; }
+
+    .compare-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      color: var(--muted);
+      line-height: 1.64;
+      font-size: clamp(14px, 0.94vw, 16px);
+    }
+
+    .compare-list span {
+      display: block;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .compare-list span::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.85;
+    }
+
+    .summary-rail {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.96fr);
+      gap: 22px;
+      flex: 1;
+    }
+
+    .quote-panel {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .big-quote { font-size: clamp(24px, 2.1vw, 36px); line-height: 1.4; letter-spacing: -0.03em; max-width: 20ch; }
+    .highlight { color: var(--cyan); }
+    .accent-green { color: var(--green); }
+    .accent-amber { color: var(--amber); }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 14px;
+      flex: 1;
+      align-items: center;
+      position: relative;
+    }
+
+    .flow::before {
+      content: "";
+      position: absolute;
+      left: 4%;
+      right: 4%;
+      top: 50%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(125, 211, 252, 0.08), rgba(125, 211, 252, 0.75), rgba(34, 197, 94, 0.75));
+      transform: translateY(-50%);
+      z-index: 0;
+    }
+
+    .flow-step {
+      position: relative;
+      z-index: 1;
+      padding: 22px 18px 24px;
+      min-height: 196px;
+      border-radius: 24px;
+      border: 1px solid rgba(125, 211, 252, 0.14);
+      background: linear-gradient(180deg, rgba(10, 22, 40, 0.92), rgba(7, 17, 31, 0.78));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 14px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+    }
+
+    .flow-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 24px rgba(125, 211, 252, 0.82);
+    }
+
+    .flow-step:nth-child(6n) .flow-dot {
+      background: var(--green);
+      box-shadow: 0 0 24px rgba(34, 197, 94, 0.82);
+    }
+
+    .flow-step h3 { font-size: clamp(20px, 1.55vw, 26px); max-width: 9ch; }
+
+    .flow-step p {
+      color: var(--muted);
+      line-height: 1.62;
+      font-size: clamp(13px, 0.88vw, 15px);
+      max-width: 22ch;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .system-map {
+      position: relative;
+      width: min(100%, 520px);
+      aspect-ratio: 1;
+    }
+
+    .system-map::before {
+      content: "";
+      position: absolute;
+      inset: 10%;
+      border-radius: 50%;
+      border: 1px solid rgba(125, 211, 252, 0.22);
+      box-shadow: 0 0 0 26px rgba(125, 211, 252, 0.04), 0 0 0 52px rgba(125, 211, 252, 0.03);
+    }
+
+    .node {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #d8f6ff 0%, var(--cyan) 45%, rgba(56, 189, 248, 0.3) 100%);
+      box-shadow: 0 0 30px rgba(125, 211, 252, 0.75);
+    }
+
+    .node::after {
+      content: attr(data-label);
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      font-size: 12px;
+      color: rgba(229, 240, 255, 0.82);
+      letter-spacing: 0.08em;
+    }
+
+    .line {
+      position: absolute;
+      height: 1px;
+      transform-origin: left center;
+      background: linear-gradient(90deg, rgba(125, 211, 252, 0.05), rgba(125, 211, 252, 0.75), rgba(125, 211, 252, 0.04));
+    }
+
+    .footer-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: auto;
+      color: rgba(229, 240, 255, 0.46);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-family: var(--font-display);
+    }
+
+    .indicator {
+      position: fixed;
+      bottom: 26px;
+      z-index: 8;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(125, 211, 252, 0.2);
+      background: rgba(7, 17, 31, 0.66);
+      backdrop-filter: blur(14px);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(229, 240, 255, 0.78);
+      font-family: var(--font-display);
+    }
+
+    .chapter-indicator { left: 24px; }
+    .page-indicator { right: 24px; }
+
+    .indicator strong {
+      font-size: 14px;
+      color: var(--text);
+      letter-spacing: 0.08em;
+    }
+
+    .hint {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%);
+      z-index: 8;
+      color: rgba(229, 240, 255, 0.4);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-family: var(--font-display);
+    }
+
+    .slide-shell > h2 {
+      margin-top: 6px;
+    }
+
+    .slide-shell > .lede {
+      margin-top: -6px;
+      margin-bottom: 4px;
+    }
+
+    .skills-grid {
+      align-content: start;
+    }
+
+    .skills-grid .card {
+      min-height: 0;
+      justify-content: flex-start;
+    }
+
+    .skills-grid .card-value {
+      font-size: clamp(20px, 1.55vw, 28px);
+      line-height: 1.24;
+      max-width: none;
+    }
+
+    .skills-grid .card-copy {
+      max-width: none;
+    }
+
+    .slide .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 520ms ease, transform 520ms ease;
+    }
+
+    .slide.active .reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide.active .delay-1 { transition-delay: 90ms; }
+    .slide.active .delay-2 { transition-delay: 160ms; }
+    .slide.active .delay-3 { transition-delay: 230ms; }
+    .slide.active .delay-4 { transition-delay: 300ms; }
+
+    @media (max-width: 1200px) {
+      .hero, .summary-rail { grid-template-columns: 1fr; }
+      .grid-3, .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .flow::before { display: none; }
+      h1, h2, .big-quote { max-width: none; }
+    }
+
+    @media (max-width: 860px) {
+      html, body { overflow: auto; }
+      .deck { height: auto; overflow: auto; }
+      .slides {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        padding: 24px 0 110px;
+      }
+      .slide {
+        position: relative;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        height: auto;
+        min-height: auto;
+      }
+      .slide-shell {
+        width: min(94vw, 900px);
+        aspect-ratio: auto;
+        min-height: 70vh;
+      }
+      .strip, .grid-2, .grid-3, .grid-4, .flow { grid-template-columns: 1fr; }
+      .indicator, .hint { position: fixed; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <div class="slides">
+      <section class="slide active" data-title="封面">
+        <div class="slide-shell">
+          <div class="chrome"><span class="chrome-badge">Vibe Coding Share</span><span>Slide 01</span></div>
+          <span class="eyebrow reveal delay-1">Internal Retrospective</span>
+          <div class="hero">
+            <div class="hero-copy">
+              <p class="kicker reveal delay-1">SQL Review Tool</p>
+              <h1 class="reveal delay-2">Vibe Coding<br>内部复盘</h1>
+              <p class="hero-subtitle reveal delay-3">把一个真实的工程项目，变成一次可复用的 AI 协作样本。</p>
+              <div class="hero-quote reveal delay-4">不是让 AI 代替开发，而是把 AI 变成 <span class="highlight">高响应、低摩擦</span> 的协作搭子。</div>
+            </div>
+            <div class="hero-visual reveal delay-3">
+              <div class="system-map" aria-hidden="true">
+                <span class="line" style="left: 24%; top: 31%; width: 31%; transform: rotate(18deg);"></span>
+                <span class="line" style="left: 50%; top: 31%; width: 21%; transform: rotate(112deg);"></span>
+                <span class="line" style="left: 32%; top: 62%; width: 34%; transform: rotate(-12deg);"></span>
+                <span class="line" style="left: 22%; top: 50%; width: 18%; transform: rotate(76deg);"></span>
+                <span class="node" data-label="Rule Engine" style="left: 20%; top: 28%;"></span>
+                <span class="node" data-label="Explain" style="left: 52%; top: 28%;"></span>
+                <span class="node" data-label="Metadata" style="left: 68%; top: 56%;"></span>
+                <span class="node" data-label="AI Review" style="left: 30%; top: 62%;"></span>
+                <span class="node" data-label="Delivery" style="left: 48%; top: 48%; width: 24px; height: 24px;"></span>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bar"><span>Cross-Team Share</span><span>SQL Review Tool / HTML Keynote</span></div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="项目背景">
+        <div class="slide-shell">
+          <div class="chrome"><span class="chrome-badge">Project Context</span><span>Slide 02</span></div>
+          <span class="eyebrow reveal delay-1">Why This Project</span>
+          <h2 class="reveal delay-2">它不是一个普通小工具，而是一个边界可定义的复杂工程。</h2>
+          <p class="lede reveal delay-3">这个项目同时覆盖规则审查、Explain 分析、元数据辅助、AI 建议、前后端联动、本地打包和配置治理，所以很适合拿来复盘 Vibe Coding 的真实价值。</p>
+          <div class="grid-2">
+            <article class="card reveal delay-1"><div class="card-label">场景定位</div><div class="card-value">内部 SQL 审查工具</div><div class="card-copy">把 SQL 规范检查、Explain 分析、AI 建议和结果导出收拢到一个可落地的 Web 工具里。</div></article>
+            <article class="card reveal delay-2"><div class="card-label">能力组合</div><div class="card-value">规则 + Explain + 元数据 + AI</div><div class="card-copy">既有可复现的规则引擎，也有需要自然语言解释和辅助判断的 AI 协作空间。</div></article>
+            <article class="card reveal delay-3"><div class="card-label">工程跨度</div><div class="card-value">前后端 + 配置 + 打包 + 测试</div><div class="card-copy">需求不是单一模块变更，而是多个环节同时收口，天然暴露沟通与边界问题。</div></article>
+            <article class="card reveal delay-4"><div class="card-label">复盘价值</div><div class="card-value">复杂，但可以被约束</div><div class="card-copy">它不是“让 AI 一把梭”的场景，而是“让 AI 在结构内加速”的最佳样本。</div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="协作原则">
+        <div class="slide-shell">
+          <div class="chrome"><span class="chrome-badge">Collaboration Principle</span><span>Slide 03</span></div>
+          <span class="eyebrow reveal delay-1">Core Rule</span>
+          <div class="summary-rail">
+            <div class="quote-panel reveal delay-2">
+              <h2>先讲目标，再讲边界。</h2>
+              <p class="lede">最有效的提问方式，不是“帮我做个功能”，而是把目标、范围、禁止项和验收一起讲清楚。约束越清晰，返工越少。</p>
+              <div class="big-quote">需求表达不是描述功能，而是在定义 <span class="highlight">AI 可以工作的结构</span>。</div>
+            </div>
+            <div class="strip">
+              <div class="strip-step reveal delay-1"><div class="strip-index">01</div><div class="strip-title">业务目标</div><div class="strip-copy">先说要解决什么问题，而不是先说控件怎么长。</div></div>
+              <div class="strip-step reveal delay-2"><div class="strip-index">02</div><div class="strip-title">范围边界</div><div class="strip-copy">明确这次改动覆盖哪里，不覆盖哪里。</div></div>
+              <div class="strip-step reveal delay-3"><div class="strip-index">03</div><div class="strip-title">禁止改动</div><div class="strip-copy">把不能动的 API、文件和语义提前写出来。</div></div>
+              <div class="strip-step reveal delay-4"><div class="strip-index">04</div><div class="strip-title">验收标准</div><div class="strip-copy">要求验证后再宣布完成，用结果闭环而不是靠感觉。</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="高效沟通四动作">
+        <div class="slide-shell">
+          <div class="chrome"><span class="chrome-badge">Communication Moves</span><span>Slide 04</span></div>
+          <span class="eyebrow reveal delay-1">Four Moves</span>
+          <h2 class="reveal delay-2">把复杂需求拆成 AI 能稳定接住的四个动作。</h2>
+          <div class="grid-4">
+            <article class="card reveal delay-1"><div class="metric"><div class="metric-number">01</div><div class="metric-title">讲目标</div><div class="card-copy">先说业务意图，避免 AI 只盯着“表面功能”。</div></div></article>
+            <article class="card reveal delay-2"><div class="metric"><div class="metric-number">02</div><div class="metric-title">讲非目标</div><div class="card-copy">不说清非目标，AI 很容易补全成“看似合理”的错误实现。</div></div></article>
+            <article class="card reveal delay-3"><div class="metric"><div class="metric-number">03</div><div class="metric-title">分块推进</div><div class="card-copy">把需求切成稳定工作块，便于校验，也便于定位问题。</div></div></article>
+            <article class="card reveal delay-4"><div class="metric"><div class="metric-number">04</div><div class="metric-title">验证后完成</div><div class="card-copy">改完先跑验证，再说完成，把“逻辑上应该行”变成“证据上真的行”。</div></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="高价值 Skills">
+        <div class="slide-shell">
+          <div class="chrome"><span class="chrome-badge">Skills</span><span>Slide 05</span></div>
+          <span class="eyebrow reveal delay-1">What Actually Helped</span>
+          <h2 class="reveal delay-2">真正有价值的，不是“技能很多”，而是每个 skill 都在解决一种失控风险。</h2>
+          <div class="grid-2 skills-grid">
+            <article class="card reveal delay-1"><div class="card-label">brainstorming</div><div class="card-value">先把问题说完整</div><div class="card-copy">强制在开写之前说清上下文、目标、边界和更轻的实现路径。</div></article>
+            <article class="card reveal delay-2"><div class="card-label">writing-plans</div><div class="card-value">把设计收成可执行计划</div><div class="card-copy">把模糊需求变成有顺序、有风险控制和有验证点的落地清单。</div></article>
+            <article class="card reveal delay-3"><div class="card-label">verification-before-completion</div><div class="card-value">防止“以为完成”</div><div class="card-copy">要求改完先验证，再宣布完成，让交付从“写得快”拉回“交得稳”。</div></article>
+            <article class="card reveal delay-4"><div class="card-label">systematic-debugging</div><div class="card-value">把排障改成分层定位</div><div class="card-copy">先拆现象、预期和根因，再修，不被补丁式开发牵着走。</div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="模式配合">
+        <div class="slide-shell">
+          <div class="chrome"><span class="chrome-badge">Mode Switching</span><span>Slide 06</span></div>
+          <span class="eyebrow reveal delay-1">Plan / Agent / Debug</span>
+          <h2 class="reveal delay-2">不是一个模式包打天下，而是在不同阶段切换正确的工作方式。</h2>
+          <div class="grid-3">
+            <article class="card reveal delay-1"><div class="compare-card"><div class="compare-top">Plan Mode</div><div class="compare-list"><span>适合需求还没完全定型的时候。</span><span>帮助澄清边界、非目标和实施顺序。</span><span>作用是把模糊问题压缩成可执行结构。</span></div></div></article>
+            <article class="card reveal delay-2"><div class="compare-card"><div class="compare-top">Agent Mode</div><div class="compare-list"><span>适合进入真正落地阶段后使用。</span><span>能跨文件改代码、跑命令、联动前后端与文档。</span><span>能力强，所以更需要人来约束边界。</span></div></div></article>
+            <article class="card reveal delay-3"><div class="compare-card"><div class="compare-top">Debug Mode</div><div class="compare-list"><span>适合问题已经出现，但根因还不清楚的时候。</span><span>帮助拆现象、预期、最近改动和可能根因。</span><span>避免哪里报错就直接补哪里。</span></div></div></article>
+          </div>
+          <div class="hero-quote reveal delay-4">一条最稳的节奏：<span class="highlight">先澄清，再落地，出错后定位，再回到实现。</span></div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="工作流">
+        <div class="slide-shell">
+          <div class="chrome"><span class="chrome-badge">Workflow</span><span>Slide 07</span></div>
+          <span class="eyebrow reveal delay-1">Reusable Flow</span>
+          <h2 class="reveal delay-2">最有效的 Vibe Coding，不是“写得快”，而是“始终在闭环里工作”。</h2>
+          <div class="flow">
+            <article class="flow-step reveal delay-1"><div class="flow-dot"></div><h3>设计</h3><p>先确定原则、边界和核心判断，别直接让 AI 开写。</p></article>
+            <article class="flow-step reveal delay-1"><div class="flow-dot"></div><h3>计划</h3><p>把需求拆成顺序明确的任务，让实现路径变得稳定。</p></article>
+            <article class="flow-step reveal delay-2"><div class="flow-dot"></div><h3>实现</h3><p>进入 Agent Mode，按块推进，而不是一口气改完全部。</p></article>
+            <article class="flow-step reveal delay-2"><div class="flow-dot"></div><h3>验证</h3><p>每完成一个逻辑块就验证，让偏差尽早暴露。</p></article>
+            <article class="flow-step reveal delay-3"><div class="flow-dot"></div><h3>修复</h3><p>问题出现时切到 Debug Mode，先定位根因再修。</p></article>
+            <article class="flow-step reveal delay-3"><div class="flow-dot"></div><h3>再验证</h3><p>闭环之后再宣布完成，把交付建立在证据上。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="典型案例">
+        <div class="slide-shell">
+          <div class="chrome"><span class="chrome-badge">Three Cases</span><span>Slide 08</span></div>
+          <span class="eyebrow reveal delay-1">Cases That Matter</span>
+          <h2 class="reveal delay-2">真正决定方向的，往往不是代码量，而是那些被及时纠偏的表达。</h2>
+          <div class="grid-3">
+            <article class="card reveal delay-1"><div class="card-label">Case 01</div><div class="card-value">功能语义纠偏</div><div class="card-copy"><span class="accent-amber">错误理解：</span>把“复制/导出”理解成导出提示词。<br><span class="accent-green">正确表达：</span>复制和导出的对象，是审查完成后的结果，而不是 AI 提示词本身。</div></article>
+            <article class="card reveal delay-2"><div class="card-label">Case 02</div><div class="card-value">把边界写进要求</div><div class="card-copy"><span class="accent-amber">错误理解：</span>默认允许 AI 改 API、改计划文件、自由替换实现。<br><span class="accent-green">正确表达：</span>明确写出哪些接口、文件和实现边界不能动。</div></article>
+            <article class="card reveal delay-3"><div class="card-label">Case 03</div><div class="card-value">打包时讲清保留与排除</div><div class="card-copy"><span class="accent-amber">错误理解：</span>只说“不打包数据库”，很可能把该保留的内置数据也删掉。<br><span class="accent-green">正确表达：</span>区分敏感运行配置和允许内置的静态示例数据。</div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide" data-title="总结">
+        <div class="slide-shell">
+          <div class="chrome"><span class="chrome-badge">Takeaways</span><span>Slide 09</span></div>
+          <span class="eyebrow reveal delay-1">Final Message</span>
+          <div class="summary-rail">
+            <div class="stack">
+              <article class="card reveal delay-1"><div class="card-label">经验 01</div><div class="card-value">AI 最怕默认推断</div><div class="card-copy">凡是没被明说的东西，AI 都会试图补全，而返工往往就从这里开始。</div></article>
+              <article class="card reveal delay-2"><div class="card-label">经验 02</div><div class="card-value">项目越复杂，越要让 AI 在结构内工作</div><div class="card-copy">先有设计，再有计划，最后按计划局部实现，才能把速度转成稳定交付。</div></article>
+              <article class="card reveal delay-3"><div class="card-label">经验 03</div><div class="card-value">验证不是收尾动作，而是沟通闭环的一部分</div><div class="card-copy">需求、设计、计划、实现、验证、修复，再验证，缺一环都会让协作质量下滑。</div></article>
+            </div>
+            <div class="quote-panel reveal delay-4">
+              <div class="big-quote">真正高效的 <span class="highlight">Vibe Coding</span>，不是让 AI 代替开发，而是让 AI 在 <span class="highlight">清晰边界、明确计划和持续验证</span> 的框架里，成为一个高响应、低摩擦的协作型工程搭子。</div>
+              <p class="lede">这也是这次 SQL Review Tool 项目最值得复用的部分：不是某个功能，而是一整套可持续的协作方法。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="indicator chapter-indicator">Section <strong id="chapter-label">封面</strong></div>
+    <div class="indicator page-indicator">Page <strong id="page-label">01 / 09</strong></div>
+    <div class="hint">ArrowLeft / ArrowRight / Space / Home / End</div>
+  </div>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    const chapterLabel = document.getElementById("chapter-label");
+    const pageLabel = document.getElementById("page-label");
+    let activeIndex = 0;
+
+    function updateIndicators(index) {
+      const current = slides[index];
+      const total = String(slides.length).padStart(2, "0");
+      const page = String(index + 1).padStart(2, "0");
+      chapterLabel.textContent = current.dataset.title || "";
+      pageLabel.textContent = `${page} / ${total}`;
+    }
+
+    function setActiveSlide(nextIndex) {
+      if (nextIndex < 0 || nextIndex >= slides.length || nextIndex === activeIndex) return;
+      const previous = slides[activeIndex];
+      const next = slides[nextIndex];
+      previous.classList.remove("active");
+      previous.classList.add("exit-left");
+      next.classList.add("active");
+      window.setTimeout(() => previous.classList.remove("exit-left"), 560);
+      activeIndex = nextIndex;
+      updateIndicators(activeIndex);
+    }
+
+    function goToSlide(index) {
+      if (window.matchMedia("(max-width: 860px)").matches) {
+        const target = slides[index];
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+      setActiveSlide(index);
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (["ArrowRight", "ArrowDown", " ", "PageDown"].includes(event.key)) {
+        event.preventDefault();
+        goToSlide(Math.min(activeIndex + 1, slides.length - 1));
+      }
+      if (["ArrowLeft", "ArrowUp", "PageUp"].includes(event.key)) {
+        event.preventDefault();
+        goToSlide(Math.max(activeIndex - 1, 0));
+      }
+      if (event.key === "Home") {
+        event.preventDefault();
+        goToSlide(0);
+      }
+      if (event.key === "End") {
+        event.preventDefault();
+        goToSlide(slides.length - 1);
+      }
+    });
+
+    updateIndicators(activeIndex);
+  </script>
+</body>
+</html>
