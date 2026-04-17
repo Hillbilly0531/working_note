@@ -1,0 +1,12 @@
+xxl:
+  job:
+    admin:
+      addresses: http://192.168.27.165:23360/xxl-job-admin
+    executor:
+      appname: xxl-job-exchange
+      port: 31092
+      address:
+      ip:
+      logpath: /opt/ysbapi/xxl-job/executor/datacenter-exchange
+      logretentiondays: 30
+    accessToken:

@@ -1,0 +1,30 @@
+spring:
+  rabbitmq:
+    host: 192.168.27.57
+    port: 5672
+    username: admin
+    password: leyo@@123
+    requested-heartbeat: 5 # 心跳时间 秒
+    virtual-host: /
+    connection-timeout: 10000 # 连接超时 毫秒
+    publisher-returns: true #是否启用【发布返回】
+    listener:
+      simple:
+        concurrency: 10 #最小的消费者数量
+        max-concurrency: 20 #最大的消费数量
+        prefetch: 1 #指定一个请求能处理多少个消息，如果有事务的话，必须大于等于transaction数量.
+        auto-startup: true #是否启动时自动启动容器
+        default-requeue-rejected: true #决定被拒绝的消息是否重新入队；默认是true（与参数acknowledge-mode有关系）
+        acknowledge-mode: auto #其有三种配置方式，分别是none、manual和auto。
+        retry:
+          enabled: true #监听重试是否可用
+          max-attempts: 5 # 重试次数
+    template:
+      reply-timeout: 10000 # sendAndReceive()方法的超时时间
+      receive-timeout: 10000 #receive() 操作的超时时间
+      retry:
+        enabled: true #发送重试是否可用
+        max-attempts: 5 # 最大重试次数
+        initial-interval: 1000 #第一次和第二次尝试发布或传递消息之间的间隔
+        multiplier: 1.0 #应用于上一重试间隔的乘数
+        max-interval: 10000 # 重试最大间隔

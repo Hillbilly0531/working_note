@@ -1,0 +1,17 @@
+spring:
+  mail:
+    #发送邮件服务器
+    host: smtp.exmail.qq.com
+    #发送邮件的邮箱地址
+    username: ENC(hUvP2MWlsy3Y7URekznvhzlVtQE0XrrEx0EblF5yf0Q=)
+    #客户端授权码，不是邮箱密码,网易的是自己设置的
+    password: ENC(n65xLj+J/L+GHTcNyaDE6QdMg3XwzoAX)
+    #端口
+    properties.mail.smtp.port: 465
+    # 发送邮件的地址，和上面username一致
+    from: service@leyopharm.com
+    serveraddress: datacenter_pms_dev
+    properties.mail.smtp.starttls.enable: true
+    properties.mail.smtp.starttls.required: true
+    properties.mail.smtp.ssl.enable: true
+    default-encoding: utf-8
