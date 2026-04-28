@@ -113,7 +113,7 @@ public class CDCTest {
                 .databaseList("mytest")
                 .tableList("mytest.course")
                 .username("root")
-                .password("root")
+                .password("${MYSQL_PASSWORD}")
                 .deserializer(new JsonDebeziumDeserializationSchema())
                 .build();
 

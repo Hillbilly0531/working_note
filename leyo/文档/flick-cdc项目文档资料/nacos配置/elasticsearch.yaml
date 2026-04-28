@@ -4,4 +4,4 @@ spring:
       hosts:
         - 192.168.27.55:19200
       username: elastic
-      password: leyo@@2021
+      password: ${ELASTIC_PASSWORD}

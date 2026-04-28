@@ -233,7 +233,7 @@ CREATE TABLE mysql_ts_saleoutmt (
     'hostname' = '192.168.27.54',
     'port' = '3306',
     'username' = 'root',
-    'password' = 'Leyo@2022',
+    'password' = '${MYSQL_PASSWORD}',
     'database-name' = 'db_stock',
     'table-name' = 'ts_saleoutmt',
     'scan.startup.mode' = 'initial',
@@ -336,7 +336,7 @@ CREATE TABLE es_ts_saleoutmt (
     'connector' = 'elasticsearch-7',
     'hosts' = 'http://192.168.27.55:19200',
     'username' = 'elastic',
-    'password' = 'leyo@@2021',
+    'password' = '${ELASTIC_PASSWORD}',
     'index' = 'ts_saleoutmt',
     'document-id.key-delimiter' = '$',
     'sink.bulk-flush.max-actions' = '1000',
@@ -380,7 +380,7 @@ FROM mysql_ts_saleoutmt;
 ### 1.3 验证 ES 数据命令
 
 ```bash
-curl -u elastic:leyo@@2021 "http://192.168.27.55:19200/ts_saleoutmt/_count"
+curl -u elastic:${ELASTIC_PASSWORD} "http://192.168.27.55:19200/ts_saleoutmt/_count"
 ```
 
 ---
@@ -493,10 +493,10 @@ ORDER BY dates DESC;
 
 ```bash
 # 查看ES中的文档数量
-curl -u elastic:leyo@@2021 "http://192.168.27.55:19200/ts_saleoutmt/_count"
+curl -u elastic:${ELASTIC_PASSWORD} "http://192.168.27.55:19200/ts_saleoutmt/_count"
 
 # 查询最近同步的数据
-curl -u elastic:leyo@@2021 "http://192.168.27.55:19200/ts_saleoutmt/_search?pretty" -H 'Content-Type: application/json' -d'
+curl -u elastic:${ELASTIC_PASSWORD} "http://192.168.27.55:19200/ts_saleoutmt/_search?pretty" -H 'Content-Type: application/json' -d'
 {
   "query": {"match_all": {}},
   "sort": [{"mtime": "desc"}],
@@ -505,7 +505,7 @@ curl -u elastic:leyo@@2021 "http://192.168.27.55:19200/ts_saleoutmt/_search?pret
 '
 
 # 按日期聚合统计
-curl -u elastic:leyo@@2021 "http://192.168.27.55:19200/ts_saleoutmt/_search?pretty" -H 'Content-Type: application/json' -d'
+curl -u elastic:${ELASTIC_PASSWORD} "http://192.168.27.55:19200/ts_saleoutmt/_search?pretty" -H 'Content-Type: application/json' -d'
 {
   "size": 0,
   "aggs": {
@@ -570,7 +570,7 @@ SHOW SLAVE STATUS\G;
 
 | 序号 | 问题描述 | 原因 | 解决方案 |
 |------|---------|------|---------|
-| 2 | ES 连接配置错误、无法连通 | hosts 写错、无权限、端口不通 | 确保 `hosts = "http://IP:PORT"`、账号密码正确、网络互通。验证：`curl -u elastic:leyo@@2021 http://192.168.27.55:19200` |
+| 2 | ES 连接配置错误、无法连通 | hosts 写错、无权限、端口不通 | 确保 `hosts = "http://IP:PORT"`、账号密码正确、网络互通。验证：`curl -u elastic:${ELASTIC_PASSWORD} http://192.168.27.55:19200` |
 | 3 | **未开启 Checkpoint → ES 数据不刷新、一直缓存** | Flink ES Sink 默认 Checkpoint 触发提交，不开 Checkpoint 数据永远不落地 ES | 必须开启：`SET execution.checkpointing.interval = 30s;` |
 | 4 | **failure-handler = ignore → 错误被静默吃掉** | 写入 ES 失败但不报错、不打印日志 | 测试环境必须设为：`'failure-handler' = 'fail'` |
 
@@ -713,13 +713,13 @@ high-availability.jobmanager.port: 6123-6133
 ### 11.1 验证 ES 连接
 
 ```bash
-curl -u elastic:leyo@@2021 http://192.168.27.55:19200
+curl -u elastic:${ELASTIC_PASSWORD} http://192.168.27.55:19200
 ```
 
 ### 11.2 验证 ES 数据量
 
 ```bash
-curl -u elastic:leyo@@2021 "http://192.168.27.55:19200/ts_saleoutmt/_count"
+curl -u elastic:${ELASTIC_PASSWORD} "http://192.168.27.55:19200/ts_saleoutmt/_count"
 ```
 
 ### 11.3 验证 Flink 任务状态

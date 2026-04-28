@@ -58,7 +58,7 @@
 {
   "domain": "guanbi",
   "loginId": "LY010307",
-  "password": "eUlGNnBhX2c="
+  "password": "${GUANDATA_PASSWORD_BASE64}"
 }
 ```
 
@@ -76,7 +76,7 @@ curl --location 'https://bi.leyopharm.com/public-api/sign-in' \
   --data '{
     "domain": "guanbi",
     "loginId": "LY010307",
-    "password": "eUlGNnBhX2c="
+    "password": "${GUANDATA_PASSWORD_BASE64}"
   }'
 ```
 

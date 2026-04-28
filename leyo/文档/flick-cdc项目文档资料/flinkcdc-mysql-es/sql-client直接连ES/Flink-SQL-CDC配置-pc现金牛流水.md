@@ -443,10 +443,10 @@ LEFT JOIN mysql_ts_bill_detail_balance FOR SYSTEM_TIME AS OF tccwf.create_time A
 |------|------|--------|
 | MYSQL_HOST | MySQL 主机地址 | 192.168.27.54 |
 | MYSQL_USERNAME | MySQL 用户名 | root |
-| MYSQL_PASSWORD | MySQL 密码 | Leyo@2022 |
+| MYSQL_PASSWORD | MySQL 密码 | ${MYSQL_PASSWORD} |
 | ELASTIC_HOSTS | ES 连接地址 | http://192.168.27.55:19200 |
 | ELASTIC_USERNAME | ES 用户名 | elastic |
-| ELASTIC_PASSWORD | ES 密码 | leyo@@2021 |
+| ELASTIC_PASSWORD | ES 密码 | ${ELASTIC_PASSWORD} |
 
 ---
 
@@ -471,10 +471,10 @@ LEFT JOIN mysql_ts_bill_detail_balance FOR SYSTEM_TIME AS OF tccwf.create_time A
 
 ```bash
 # 验证 ES 连接
-curl -u elastic:leyo@@2021 http://192.168.27.55:19200
+curl -u elastic:${ELASTIC_PASSWORD} http://192.168.27.55:19200
 
 # 查看 ES 中的文档数量
-curl -u elastic:leyo@@2021 "http://192.168.27.55:19200/pc_cash_cow_flow/_count"
+curl -u elastic:${ELASTIC_PASSWORD} "http://192.168.27.55:19200/pc_cash_cow_flow/_count"
 
 # 查看 Flink 任务状态
 ./bin/flink list -r

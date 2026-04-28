@@ -3,7 +3,7 @@ spring:
     host: 192.168.27.57
     port: 5672
     username: admin
-    password: leyo@@123
+    password: ${RABBITMQ_PASSWORD}
     requested-heartbeat: 5 # 心跳时间 秒
     virtual-host: /
     connection-timeout: 10000 # 连接超时 毫秒
