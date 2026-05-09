@@ -1,1 +1,1 @@
-每次对话必须调用这个skills working-logger 
+每次收到用户消息时，必须优先使用 `working-logger` skill，并在阶段结束前把本轮工作以 **Obsidian 格式**追加到 `D:\IdeaProjects\working_note\setting\leyo\working_note\{YYYY-MM-DD}.md`（YAML properties、`[[wikilink]]`、层级标签、callout）。日志必须使用中文，包含元信息、内容摘要、完成任务、进行中任务、代码变更、验证结果、经验候选与备注；禁止把正式日志写入 `.working_logger`。当出现跨任务可复用结论时，追加或更新 `D:\IdeaProjects\working_note\setting\leyo\working_note\experience\{YYYY-MM}.md` 中的经验卡片并用 `[[日期#标题]]` 链回来源；无值得沉淀的结论时可不写当月经验文件。

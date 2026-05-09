@@ -183,7 +183,7 @@ interface ProductRebateLadder {
 | `rebateRule = 'PER_ITEM'` | `perX` 和 `rebateAmount` 必须为 null；`rebateAmountPerUnit` 必填 |
 | `rebateRule = 'PER_X_ITEMS'` | `rebateAmountPerUnit` 必须为 null；`perX` 和 `rebateAmount` 必填 |
 
-> 保存接口以 `rebateRule` 为准做严格互斥校验：入参携带非当前规则字段时直接校验失败，不由后端静默清空，避免修改协议时残留历史字段造成计算歧义。
+> 保存接口（包含新增、修改、保存总体限制、保存商品限制等所有写接口）均以 `rebateRule` 为准做严格互斥校验：入参携带非当前规则字段时直接校验失败，不由后端静默清空，避免修改协议时残留历史字段造成计算歧义。
 
 ---
 
@@ -199,6 +199,12 @@ interface ProductRebateLadder {
 | 查询协议列表 | GET | `TODO: /api/rebate/agreement/list` | 分页查询协议列表 |
 
 ## 4.2 请求/响应结构
+
+> [!warning]
+> 阶梯字段不得混传：
+> - `rebateRule='PER_ITEM'`：仅允许 `rebateAmountPerUnit`，禁止 `perX`、`rebateAmount`
+> - `rebateRule='PER_X_ITEMS'`：仅允许 `perX`、`rebateAmount`，禁止 `rebateAmountPerUnit`
+> - 规则适用于总体限制阶梯与商品限制阶梯的所有保存场景
 
 ```typescript
 // TODO: 以项目实际结构为准
