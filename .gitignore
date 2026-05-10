@@ -1,0 +1,5 @@
+# PDF files (large files not suitable for git)
+*.pdf
+
+# Python scripts used for maintenance
+remove_pdf*.py
